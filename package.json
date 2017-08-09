@@ -1,0 +1,40 @@
+{
+  "name": "dojo-<< package-name >>",
+  "version": "2.0.0-pre",
+  "description": "<< DESCRIPTION GOES HERE >>",
+  "engines": {
+    "npm": ">=3.0.0"
+  },
+  "private": true,
+  "homepage": "http://dojo.io",
+  "bugs": {
+    "url": "https://github.com/dojo/<< package-name >>/issues"
+  },
+  "license": "BSD-3-Clause",
+  "main": "main.js",
+  "files": [
+    "dist",
+    "src",
+    "typings.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dojo/<< package-name >>.git"
+  },
+  "scripts": {
+    "prepublish": "grunt peerDepInstall",
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "@types/chai": "4.0.*",
+    "@types/glob": "5.0.*",
+    "@types/grunt": "0.4.*",
+    "@types/sinon": "^1.16.31",
+    "codecov.io": "0.1.6",
+    "@dojo/loader": "beta1",
+    "grunt": "~1.0.1",
+    "grunt-dojo2": "beta1",
+    "intern": "^3.4.6",
+    "typescript": "~2.4.2"
+  }
+}
