@@ -1,25 +1,24 @@
 {
-  "name": "dojo-<< package-name >>",
+  "name": "@dojo/interop",
   "version": "2.0.0-pre",
-  "description": "<< DESCRIPTION GOES HERE >>",
+  "description": "Provides bindings and interoperability between Dojo 2 and other libraries",
   "engines": {
     "npm": ">=3.0.0"
   },
   "private": true,
   "homepage": "http://dojo.io",
   "bugs": {
-    "url": "https://github.com/dojo/<< package-name >>/issues"
+    "url": "https://github.com/dojo/interop/issues"
   },
   "license": "BSD-3-Clause",
   "main": "main.js",
   "files": [
     "dist",
-    "src",
-    "typings.json"
+    "src"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dojo/<< package-name >>.git"
+    "url": "https://github.com/dojo/interop.git"
   },
   "scripts": {
     "prepublish": "grunt peerDepInstall",
@@ -31,9 +30,9 @@
     "@types/grunt": "0.4.*",
     "@types/sinon": "^1.16.31",
     "codecov.io": "0.1.6",
-    "@dojo/loader": "beta1",
+    "@dojo/loader": "next",
     "grunt": "~1.0.1",
-    "grunt-dojo2": "beta1",
+    "grunt-dojo2": "latest",
     "intern": "^3.4.6",
     "typescript": "~2.4.2"
   }

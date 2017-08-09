@@ -1,20 +1,24 @@
-# dojo-<< package-name >>
+# @dojo/interop
 
 <!-- TODO: change and uncomment
-[![Build Status](https://travis-ci.org/dojo/<< package-name >>.svg?branch=master)](https://travis-ci.org/dojo/<< package-name >>)
-[![codecov](https://codecov.io/gh/dojo/<< package-name >>/branch/master/graph/badge.svg)](https://codecov.io/gh/dojo/<< package-name >>)
-[![npm version](https://badge.fury.io/js/dojo-<< package-name >>.svg)](http://badge.fury.io/js/dojo-<< package-name >>)
+[![Build Status](https://travis-ci.org/dojo/interop.svg?branch=master)](https://travis-ci.org/dojo/interop)
+[![codecov](https://codecov.io/gh/dojo/interop/branch/master/graph/badge.svg)](https://codecov.io/gh/dojo/interop)
+[![npm version](https://badge.fury.io/js/dojo-<< package-name >>.svg)](http://badge.fury.io/js/%40dojo%2Finterop)
 -->
 
-TODO: Replace with a description of this package
+Package that provides various bindings to enable interoperability for external libraries and Dojo 2 packages.
 
 ## Features
 
-TODO: Add sections on features of this package
+Coming Soon!
 
 ## How do I use this package?
 
-TODO: Add appropriate usage and instruction guidelines
+To use @dojo/interop, install the package using npm:
+
+```
+npm install @dojo/interop
+```
 
 ## How do I contribute?
 
