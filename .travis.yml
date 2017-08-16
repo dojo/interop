@@ -5,10 +5,8 @@ node_js:
 env:
   global:
   # Please get your own free key if you want to test yourself
-  - BROWSERSTACK_USERNAME: << USERNAME GOES HERE >>
-  - BROWSERSTACK_ACCESS_KEY: << ACCESS KEY GOES HERE >>
-  - SAUCE_USERNAME: << USERNAME GOES HERE >>
-  - SAUCE_ACCESS_KEY: << ACCESS KEY GOES HERE >>
+  - BROWSERSTACK_USERNAME: dylanschiemann2
+  - BROWSERSTACK_ACCESS_KEY: 2upt88qsxsqqeukQvecu
 install:
 - travis_retry npm install grunt-cli
 - travis_retry npm install
