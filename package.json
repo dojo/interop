@@ -24,6 +24,13 @@
     "prepublish": "grunt peerDepInstall",
     "test": "grunt test"
   },
+  "peerDependencies": {
+    "@dojo/widget-core": "next",
+    "@dojo/core": "next",
+    "@dojo/has": "next",
+    "@dojo/i18n": "next",
+    "@dojo/shim": "next"
+  },
   "devDependencies": {
     "@types/chai": "4.0.*",
     "@types/glob": "5.0.*",
@@ -35,5 +42,8 @@
     "grunt-dojo2": "latest",
     "intern": "^3.4.6",
     "typescript": "~2.4.2"
+  },
+  "dependencies": {
+    "redux": "^3.7.2"
   }
 }
