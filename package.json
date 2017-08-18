@@ -32,12 +32,13 @@
     "@dojo/shim": "next"
   },
   "devDependencies": {
+    "@dojo/interfaces": "next",
+    "@dojo/loader": "next",
     "@types/chai": "4.0.*",
     "@types/glob": "5.0.*",
     "@types/grunt": "0.4.*",
     "@types/sinon": "^1.16.31",
     "codecov.io": "0.1.6",
-    "@dojo/loader": "next",
     "grunt": "~1.0.1",
     "grunt-dojo2": "latest",
     "intern": "^3.4.6",
