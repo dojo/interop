@@ -57,8 +57,23 @@ export const loaderOptions = {
 		{ name: 'grunt-dojo2', location: 'node_modules/grunt-dojo2' },
 		{ name: 'redux', location: 'node_modules/redux/dist', main: 'redux' },
 		{ name: 'src', location: '_build/src' },
-		{ name: 'tests', location: '_build/tests' }
-	]
+		{ name: 'tests', location: '_build/tests' },
+		{ name: 'cldr-data', location: 'node_modules/cldr-data' },
+		{ name: 'cldrjs', location: 'node_modules/cldrjs' },
+		{ name: 'globalize', location: 'node_modules/globalize', main: 'dist/globalize' },
+		{ name: 'maquette', location: 'node_modules/maquette/dist', main: 'maquette' },
+		{ name: 'pepjs', location: 'node_modules/pepjs/dist', main: 'pep' },
+		{ name: 'grunt-dojo2', location: 'node_modules/grunt-dojo2'},
+		{ name: 'sinon', location: 'node_modules/sinon/pkg', main: 'sinon' }
+	],
+	map: {
+		globalize: {
+			'cldr': 'cldrjs/dist/cldr',
+			'cldr/event': 'cldrjs/dist/cldr/event',
+			'cldr/supplemental': 'cldrjs/dist/cldr/supplemental',
+			'cldr/unresolved': 'cldrjs/dist/cldr/unresolved'
+		}
+	}
 };
 
 // Non-functional test suite(s) to run in each browser
