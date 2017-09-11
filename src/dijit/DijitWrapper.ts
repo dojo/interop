@@ -1,3 +1,4 @@
+import { createHandle } from '@dojo/core/lang';
 import { v } from '@dojo/widget-core/d';
 import { Constructor, DNode, WidgetProperties } from '@dojo/widget-core/interfaces';
 import { WidgetBase } from '@dojo/widget-core/WidgetBase';
@@ -35,6 +36,10 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D, Partial
 			if (node && !this._dijit) {
 				const dijit = this._dijit = new Dijit(this.properties, node);
 				dijit.startup();
+				this.own(createHandle(() => {
+					dijit.destroy();
+					this._dijit = undefined;
+				}));
 			}
 			return v(tagName, { key }, this.children);
 		}
