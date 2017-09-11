@@ -31,15 +31,18 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D, Partial
 	return class extends WidgetBase<Partial<D>> {
 		private _dijit: D | undefined;
 
+		private _createDijit(node: HTMLElement) {
+			const dijit = this._dijit = new Dijit(this.properties, node);
+			this.own(createHandle(() => {
+				dijit.destroy();
+				this._dijit = undefined;
+			}));
+		}
+
 		protected render(): DNode {
 			const node = this.meta(DomNode).get(key);
 			if (node && !this._dijit) {
-				const dijit = this._dijit = new Dijit(this.properties, node);
-				dijit.startup();
-				this.own(createHandle(() => {
-					dijit.destroy();
-					this._dijit = undefined;
-				}));
+				this._createDijit(node);
 			}
 			return v(tagName, { key }, this.children);
 		}
