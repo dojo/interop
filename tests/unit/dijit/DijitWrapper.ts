@@ -1,5 +1,5 @@
 import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
+// import * as assert from 'intern/chai!assert';
 import DijitWrapper from '../../../src/dijit/DijitWrapper';
 
 import { w } from '@dojo/widget-core/d';
@@ -17,8 +17,20 @@ registerSuite({
 				//
 			}
 
+			public addChild() {
+				//
+			}
+
 			public destroy(preserveDom = true) {
 				//
+			}
+
+			public placeAt() {
+				return this;
+			}
+
+			public set() {
+				return this;
 			}
 
 			public startup() {
@@ -30,7 +42,7 @@ registerSuite({
 
 		const wnode = w(MockDijitWidget, {
 			id: 'foo'
-		});
+		}, [ w(MockDijitWidget, {}) ]);
 
 		console.log(wnode);
 	}
