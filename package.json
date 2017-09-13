@@ -44,7 +44,7 @@
     "intern": "^3.4.6",
     "typescript": "~2.4.2"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "redux": "^3.7.2"
   }
 }
