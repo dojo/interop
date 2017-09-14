@@ -6,6 +6,9 @@ import { afterRender, WidgetBase } from '@dojo/widget-core/WidgetBase';
 import Base from '@dojo/widget-core/meta/Base';
 import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitWrapperClass } from './interfaces';
 
+/**
+ * An internal meta provider that provides the rendered DOM node on _root_ Dijits
+ */
 class DomNode extends Base {
 	public get(key: string) {
 		this.requireNode(key);
@@ -40,6 +43,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 		 * @param params The paramters for the dijit
 		 */
 		private _updateDijit(params: { [param: string]: any; }) {
+			// not null assertion, because this can only be called when `_dijit` is assigned
 			this._dijit!.set(params);
 		}
 
