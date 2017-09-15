@@ -1,5 +1,4 @@
 import * as registerSuite from 'intern!object';
-// import * as assert from 'intern/chai!assert';
 import harness from '@dojo/test-extras/harness';
 import { stub } from 'sinon';
 import { compareProperty } from '@dojo/test-extras/support/d';
@@ -21,7 +20,10 @@ class MockDijit {
 
 	public destroy(preserveDom = true) { }
 
-	public placeAt() {
+	public placeAt(node: HTMLElement, reference?: string | number) {
+		if (reference !== 'replace') {
+			throw new Error('Expected "replace" as reference');
+		}
 		return this;
 	}
 

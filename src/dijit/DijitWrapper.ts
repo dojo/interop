@@ -36,7 +36,7 @@ const DEFAULT_KEY = 'root';
 export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagName = 'div'): Constructor<DijitWrapperClass<D>> {
 	class DijitWrapper extends WidgetBase<Partial<D> & DijitWrapperProperties, WNode<DijitWrapperClass<D>>> {
 		private _dijit: D | undefined;
-		private _dijitPlaced = false;
+		private _node: HTMLElement | undefined;
 
 		/**
 		 * Temporary logic until [dojo/widget-core#670](https://github.com/dojo/widget-core/issues/670) is delivered
@@ -58,12 +58,20 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 				this._updateDijit(params);
 			}
 			const dijit = this._dijit!;
-			if (!onInstantiate && !this._dijitPlaced) {
+			if (!onInstantiate) {
 				const node = this.meta(DomNode).get(key);
 				if (node) {
-					dijit.placeAt(node, 'replace');
-					dijit.startup();
-					this._dijitPlaced = true;
+					// We need to accomodate for the node changing, because it is theoretically impossible,
+					// but have been unable to create the right conditions where this would actually occur
+					/* istanbul ignore else */
+					if (!this._node || (this._node !== node)) {
+						dijit.placeAt(node, 'replace');
+						/* istanbul ignore else */
+						if (!this._node) {
+							dijit.startup();
+						}
+						this._node = node;
+					}
 				}
 			}
 
