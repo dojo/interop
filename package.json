@@ -1,6 +1,6 @@
 {
   "name": "@dojo/interop",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-pre",
   "description": "Provides bindings and interoperability between Dojo 2 and other libraries",
   "engines": {
     "npm": ">=3.0.0"
