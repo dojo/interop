@@ -1,7 +1,7 @@
 import { createHandle } from '@dojo/core/lang';
 import { assign } from '@dojo/shim/object';
 import { isHNode, isWNode, v } from '@dojo/widget-core/d';
-import { Constructor, DNode, WNode } from '@dojo/widget-core/interfaces';
+import { Constructor, DNode, HNode, WNode } from '@dojo/widget-core/interfaces';
 import { afterRender, WidgetBase } from '@dojo/widget-core/WidgetBase';
 import Base from '@dojo/widget-core/meta/Base';
 import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitWrapperClass } from './interfaces';
@@ -85,7 +85,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 		 * @returns The post decorated values
 		 */
 		@afterRender()
-		public decorateChildProperties(result: DNode | DNode[]) {
+		public decorateChildProperties(result: HNode | DNode[]) {
 			if (!this._dijit || !this._dijit.addChild) {
 				return result;
 			}
@@ -102,7 +102,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 				}
 			}
 
-			Array.isArray(result) ? result.forEach(decorateChild) : isHNode(result) && result.children.forEach(decorateChild);
+			Array.isArray(result) ? result.forEach(decorateChild) : result.children.forEach(decorateChild);
 
 			return result;
 		}
