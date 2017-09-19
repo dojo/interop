@@ -40,7 +40,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 
 		/**
 		 * Temporary logic until [dojo/widget-core#670](https://github.com/dojo/widget-core/issues/670) is delivered
-		 * @param params The paramters for the dijit
+		 * @param params The paramters for the Dijit
 		 */
 		private _updateDijit(params: { [param: string]: any; }) {
 			// not null assertion, because this can only be called when `_dijit` is assigned
@@ -61,7 +61,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			if (!onInstantiate) {
 				const node = this.meta(DomNode).get(key);
 				if (node) {
-					// We need to accomodate for the node changing, because it is theoretically impossible,
+					// We need to accommodate for the node changing, because it is theoretically impossible,
 					// but have been unable to create the right conditions where this would actually occur
 					/* istanbul ignore else */
 					if (!this._node || (this._node !== node)) {

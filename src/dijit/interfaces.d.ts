@@ -16,12 +16,12 @@ export interface Dijit {
 	destroy(preserveDom?: boolean): void;
 
 	/**
-	 * Used to insert a _root_ dijit into the DOM created by the projector
+	 * Used to insert a _root_ Dijit into the DOM created by the projector
 	 */
 	placeAt(reference: Node | string | DocumentFragment, position?: string | number): this;
 
 	/**
-	 * Used to set a param bag on an already instantiated dijit when updating properties
+	 * Used to set a param bag on an already instantiated Dijit when updating properties
 	 */
 	set(values: { [param: string]: any }): this;
 
@@ -43,8 +43,8 @@ export interface DijitConstructor<T extends Dijit> {
  */
 export interface DijitWrapperProperties extends WidgetProperties {
 	/**
-	 * A property that if present causes the DijitWrapper to call method with the instantiated dijit, instead of
-	 * attempting to generate a DOM node to attach the dijit to.  Designed to be injected by a parent dijit so it
+	 * A property that if present causes the DijitWrapper to call method with the instantiated `dijit`, instead of
+	 * attempting to generate a DOM node to attach the `dijit` to.  Designed to be injected by a parent `dijit` so it
 	 * can append the child to itself.
 	 */
 	onInstantiate?(dijit: Dijit): void;

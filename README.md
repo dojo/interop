@@ -44,15 +44,14 @@ class App extends WidgetBase {
 export default App;
 ```
 
-This would result, when displayed through a projector, the Dijit Calendar which every time the date changed, it would log the new date
-to the console.
+The result, when displayed through a projector, is a Dijit Calendar which will log the new date to the console every time the date is changed.
 
 It is also possible to use a Dijit container, like `dijit/layout/ContentPane`, but children of a wrapped Dijit widget can only other
-wrapped Dijits.  You cannot place virtual DOM children (node from `v()`) or other non Dijit widgets as children.
+wrapped Dijits.  You cannot place virtual DOM children (nodes from `v()`) or other non Dijit widgets as children.
 
-The `DijitWrapper` takes an optional second argument, which is the `tagName` that should be used when the widgeting system needs to create a DOM node to root a widget.  By default it uses `div`.
+The `DijitWrapper` takes an optional second argument, `tagName`, which should be used when the widgeting system needs to create a DOM node to root a widget.  By default it uses `div`.
 
-For most existing Dojo 1 Dijits, the typings can be found at [dojo/typings](https://github.com/dojo/typings) and can be installed via npm via `npm install dojo-typings`.  User created Dijits should be able to be used with the `DijitWrapper` though they need to ensure that they adhere to the minimum interface described in the `/dijit/interfaces.d.ts` that is part of this package.
+For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/typings](https://github.com/dojo/typings) and can be installed via npm via `npm install dojo-typings`.  User created Dijits may be used with the `DijitWrapper` provide they adhere to the minimum interface described in the `/dijit/interfaces.d.ts` that is part of this package.
 
 ### ReduxInjector
 
