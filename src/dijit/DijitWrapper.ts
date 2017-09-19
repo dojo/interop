@@ -1,6 +1,6 @@
 import { createHandle } from '@dojo/core/lang';
 import { assign } from '@dojo/shim/object';
-import { isHNode, isWNode, v } from '@dojo/widget-core/d';
+import { isWNode, v } from '@dojo/widget-core/d';
 import { Constructor, DNode, HNode, WNode } from '@dojo/widget-core/interfaces';
 import { afterRender, WidgetBase } from '@dojo/widget-core/WidgetBase';
 import Base from '@dojo/widget-core/meta/Base';
