@@ -25,23 +25,26 @@
     "test": "grunt test"
   },
   "peerDependencies": {
-    "@dojo/widget-core": "next",
     "@dojo/core": "next",
     "@dojo/has": "next",
     "@dojo/i18n": "next",
-    "@dojo/shim": "next"
+    "@dojo/shim": "next",
+    "@dojo/widget-core": "next"
   },
   "devDependencies": {
     "@dojo/interfaces": "next",
     "@dojo/loader": "next",
+    "@dojo/test-extras": "next",
     "@types/chai": "4.0.*",
     "@types/glob": "5.0.*",
     "@types/grunt": "0.4.*",
-    "@types/sinon": "^1.16.31",
+    "@types/jsdom": "^11.0.2",
+    "@types/sinon": "^2.3.4",
     "codecov.io": "0.1.6",
     "grunt": "~1.0.1",
     "grunt-dojo2": "latest",
     "intern": "^3.4.6",
+    "sinon": "^2.3.0",
     "typescript": "~2.4.2"
   },
   "optionalDependencies": {

@@ -10,11 +10,56 @@ Package that provides various bindings to enable interoperability for external l
 
 ## Features
 
-Coming Soon!
+### DijitWrapper
+
+`DijitWrapper` is a mixin class that can convert a Dojo 1 based Dijit and allow it to integrate to the Dojo 2 widgeting system.
+
+The wrapper takes a Dijit constructor function as its input and returns a Dojo 2 widget.  For example, to take the `dijit/Calendar`
+and place it a Dojo 2 `App` widget would look something like this:
+
+```ts
+import * as CalendarDijit from 'dijit/Calendar';
+import DijitWrapper from '@dojo/interop/dijit/DijitWrapper';
+import { v, w } from '@dojo/widget-core/d';
+import WidgetBase from '@dojo/widget-core/WidgetBase';
+
+const Calendar = DijitWrapper(CalendarDijit);
+
+class App extends WidgetBase {
+  private _onCalendarChange = (date: Date) => {
+    console.log('Date selected:', date);
+  }
+
+  render() {
+    return v('div', { key: 'root' }, [
+      w(Calendar, {
+        key: 'calendar1',
+        id: 'calendar1',
+        onChange: this._onCalendarChange
+      })
+    ]);
+  }
+}
+
+export default App;
+```
+
+The result, when displayed through a projector, is a Dijit Calendar which will log the new date to the console every time the date is changed.
+
+It is also possible to use a Dijit container, like `dijit/layout/ContentPane`, but children of a wrapped Dijit widget can only other
+wrapped Dijits.  You cannot place virtual DOM children (nodes from `v()`) or other non Dijit widgets as children.
+
+The `DijitWrapper` takes an optional second argument, `tagName`, which should be used when the widgeting system needs to create a DOM node to root a widget.  By default it uses `div`.
+
+For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/typings](https://github.com/dojo/typings) and can be installed via npm via `npm install dojo-typings`.  User created Dijits may be used with the `DijitWrapper` provide they adhere to the minimum interface described in the `/dijit/interfaces.d.ts` that is part of this package.
+
+### ReduxInjector
+
+*Coming Soon*
 
 ## How do I use this package?
 
-To use @dojo/interop, install the package using npm:
+To use `@dojo/interop`, install the package using npm:
 
 ```
 npm install @dojo/interop
