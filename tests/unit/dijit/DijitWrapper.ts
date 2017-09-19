@@ -1,4 +1,5 @@
 import * as registerSuite from 'intern!object';
+import * as assert from 'intern/chai!assert';
 import harness from '@dojo/test-extras/harness';
 import { stub } from 'sinon';
 import { compareProperty } from '@dojo/test-extras/support/d';
@@ -11,6 +12,8 @@ const isRegistry = compareProperty((value) => {
 	return value instanceof WidgetRegistry;
 });
 
+let lastDestroyPreserveDom: boolean;
+
 class MockDijit {
 	public id: string;
 	public srcNodeRef: HTMLElement;
@@ -18,7 +21,9 @@ class MockDijit {
 
 	constructor(params: Object, srcRefNode?: string | Node) { }
 
-	public destroy(preserveDom = true) { }
+	public destroy(preserveDom = false) {
+		lastDestroyPreserveDom = false;
+	}
 
 	public placeAt(node: HTMLElement, reference?: string | number) {
 		if (reference !== 'replace') {
@@ -70,6 +75,7 @@ registerSuite({
 			key: 'foo'
 		});
 		widget.destroy();
+		assert.isFalse(lastDestroyPreserveDom, 'wrapper should not preserve Dijit DOM');
 	},
 
 	'a wrapped dijit should render supplied key'() {

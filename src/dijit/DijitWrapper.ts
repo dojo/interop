@@ -52,7 +52,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			if (!this._dijit) {
 				const dijit = this._dijit = new Dijit(params as Partial<D>);
 				onInstantiate && onInstantiate(dijit);
-				this.own(createHandle(() => dijit.destroy(true)));
+				this.own(createHandle(() => dijit.destroy()));
 			}
 			else {
 				this._updateDijit(params);
