@@ -106,5 +106,13 @@ registerSuite({
 	'a dijit wrapper should use tag name provided when rendering'() {
 		const widget = harness(DijitWrapper(MockDijit, 'span'));
 		widget.expectRender(v('span', { key: 'root' }, []));
+	},
+
+	'mixed in classes hold reference to Dijit constructor and tagName'() {
+		// IE11 has some strange GC behaviours which sometimes deferences the constructor, thereby holding a
+		// direct reference should avoid this issue.  See: https://github.com/dojo/interop/issues/10
+		const DijitWidget = DijitWrapper(MockDijit, 'span');
+		assert.strictEqual((DijitWidget as any).Dijit, MockDijit, 'The constructor should equal the passed constructor');
+		assert.strictEqual((DijitWidget as any).tagName, 'span', 'The tag name should equal the passed tag name');
 	}
 });

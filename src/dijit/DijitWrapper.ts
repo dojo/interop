@@ -50,7 +50,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 		protected render() {
 			const { bind, key = DEFAULT_KEY, onInstantiate, registry, ...params } = this.properties as DijitProperties;
 			if (!this._dijit) {
-				const dijit = this._dijit = new Dijit(params as Partial<D>);
+				const dijit = this._dijit = new DijitWrapper.Dijit(params as Partial<D>);
 				onInstantiate && onInstantiate(dijit);
 				this.own(createHandle(() => dijit.destroy()));
 			}
@@ -75,7 +75,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 				}
 			}
 
-			return onInstantiate ? this.children : v(tagName, { key }, this.children);
+			return onInstantiate ? this.children : v(DijitWrapper.tagName, { key }, this.children);
 		}
 
 		/**
@@ -106,6 +106,9 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 
 			return result;
 		}
+
+		public static readonly Dijit = Dijit;
+		public static readonly tagName = tagName;
 	};
 
 	return DijitWrapper;

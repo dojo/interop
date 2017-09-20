@@ -56,4 +56,14 @@ export class DijitWrapper<D extends Dijit> extends WidgetBase<Partial<D> & Dijit
 	 * @param result The render result
 	 */
 	public decorateChildProperties(result: DNode | DNode[]): DNode | DNode[];
+
+	/**
+	 * A reference to the constructor function that this `DijitWrapper` uses to construct new Dijit instances
+	 */
+	public static readonly Dijit: DijitConstructor<Dijit>;
+
+	/**
+	 * The tag name that this `DijitWrapper` will use when generating a DOM stub if required
+	 */
+	public static readonly tagName: string;
 }
