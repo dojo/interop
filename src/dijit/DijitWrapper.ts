@@ -47,6 +47,16 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			this._dijit!.set(params);
 		}
 
+		/**
+		 * A reference to the Dijit constructor function for this class
+		 */
+		public static readonly Dijit = Dijit;
+
+		/**
+		 * The tag name to be used by this class when constructing a virutal DOM node for a Dijit
+		 */
+		public static readonly tagName = tagName;
+
 		protected render() {
 			const { bind, key = DEFAULT_KEY, onInstantiate, registry, ...params } = this.properties as DijitProperties;
 			if (!this._dijit) {
@@ -106,9 +116,6 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 
 			return result;
 		}
-
-		public static readonly Dijit = Dijit;
-		public static readonly tagName = tagName;
 	};
 
 	return DijitWrapper;
