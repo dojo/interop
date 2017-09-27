@@ -2,15 +2,9 @@ import * as registerSuite from 'intern!object';
 import * as assert from 'intern/chai!assert';
 import harness from '@dojo/test-extras/harness';
 import { stub } from 'sinon';
-import { compareProperty } from '@dojo/test-extras/support/d';
 import DijitWrapper from '../../../src/dijit/DijitWrapper';
 
 import { v, w } from '@dojo/widget-core/d';
-import WidgetRegistry from '@dojo/widget-core/WidgetRegistry';
-
-const isRegistry = compareProperty((value) => {
-	return value instanceof WidgetRegistry;
-});
 
 let lastDestroyPreserveDom: boolean;
 
@@ -63,9 +57,9 @@ registerSuite({
 		]);
 
 		widget.expectRender(v('div', { key: 'root' }, [
-			w(MockDijitWidget, { key: 'foo', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'bar', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'baz', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any)
+			w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
+			w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
+			w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
 		]));
 
 		const dijit = new MockDijit({});
@@ -102,9 +96,9 @@ registerSuite({
 		]);
 
 		widget.expectRender([
-			w(MockDijitWidget, { key: 'foo', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'bar', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'baz', defaultRegistry: isRegistry , onInstantiate: widget.listener } as any)
+			w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
+			w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
+			w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
 		]);
 		widget.destroy();
 	},

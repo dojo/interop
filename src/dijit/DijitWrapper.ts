@@ -2,7 +2,8 @@ import { createHandle } from '@dojo/core/lang';
 import { assign } from '@dojo/shim/object';
 import { isWNode, v } from '@dojo/widget-core/d';
 import { Constructor, DNode, HNode, WNode } from '@dojo/widget-core/interfaces';
-import { afterRender, WidgetBase } from '@dojo/widget-core/WidgetBase';
+import { WidgetBase } from '@dojo/widget-core/WidgetBase';
+import afterRender from '@dojo/widget-core/decorators/afterRender';
 import Base from '@dojo/widget-core/meta/Base';
 import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitWrapperClass } from './interfaces';
 
@@ -10,9 +11,8 @@ import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitW
  * An internal meta provider that provides the rendered DOM node on _root_ Dijits
  */
 class DomNode extends Base {
-	public get(key: string) {
-		this.requireNode(key);
-		return this.nodes.get(key);
+	public get(key: string | number) {
+		return this.getNode(key);
 	}
 }
 
