@@ -15,9 +15,16 @@ registerSuite({
 		store.dispatch({ type: 'TEST' });
 		assert.isTrue(injectorInvalidated);
 	},
-	toInject() {
+	get() {
 		const store = createStore((state) => state);
 		const injector = new ReduxInjector(store);
-		assert.strictEqual(injector.toInject(), store);
+		assert.strictEqual(injector.get(), store);
+	},
+	set() {
+		const store = createStore((state) => state);
+		const injector = new ReduxInjector(store);
+		assert.throws(() => {
+			injector.set();
+		}, TypeError, 'Cannot perform .set() on ReduxInjector');
 	}
 });
