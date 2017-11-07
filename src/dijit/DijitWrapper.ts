@@ -112,7 +112,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 				}
 			}
 
-			Array.isArray(result) ? result.forEach(decorateChild) : result.children.forEach(decorateChild);
+			Array.isArray(result) ? result.forEach(decorateChild) : result.children && result.children.forEach(decorateChild);
 
 			return result;
 		}
