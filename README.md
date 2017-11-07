@@ -12,10 +12,10 @@ Package that provides various bindings to enable interoperability for external l
 
 ### DijitWrapper
 
-`DijitWrapper` is a mixin class that can convert a Dojo 1 based Dijit and allow it to integrate to the Dojo 2 widgeting system.
+`DijitWrapper` is a mixin class that can convert a Dojo 1 based Dijit and allow it to integrate with the Dojo 2 widgeting system.
 
 The wrapper takes a Dijit constructor function as its input and returns a Dojo 2 widget.  For example, to take the `dijit/Calendar`
-and place it a Dojo 2 `App` widget would look something like this:
+and place it in a Dojo 2 `App` widget would look something like this:
 
 ```ts
 import * as CalendarDijit from 'dijit/Calendar';
@@ -55,7 +55,87 @@ For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/ty
 
 ### ReduxInjector
 
-*Coming Soon*
+`ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `Container` pattern.
+
+An injector can be defined in the registry and then a `Container` can be used to inject the store, as shown in the example below.
+
+```typescript
+import { WidgetBase } from '@dojo/widget-core/WidgetBase';
+import { registry, v } from '@dojo/widget-core/d';
+import { Injector } from '@dojo/widget-core/Injector';
+import { Container } from '@dojo/widget-core/Container';
+import { ProjectorMixin } from '@dojo/widget-core/mixins/Projector';
+import { ReduxInjector } from '@dojo/interop/redux';
+import { createStore } from 'redux';
+
+// the reducer for the example state
+function reducer(state: any = { counter: 0 }, { type, payload }: any) {
+	switch (type) {
+		case 'INCREMENT_COUNTER':
+			return { counter: state.counter + 1 };
+		case 'DECREMENT_COUNTER':
+			return { counter: state.counter - 1 };
+		default:
+			return state;
+	}
+}
+
+// create the redux store with reducers
+const store = createStore(reducer);
+
+// Defines the injector in the registry
+registry.define('redux-store', Injector(ReduxInjector, store));
+
+// properties for the example widget
+interface ReduxExampleProperties {
+	counter: number;
+	incrementCounter: () => void;
+	decrementCounter: () => void;
+}
+
+// example widget
+class ReduxExample extends WidgetBase<ReduxExampleProperties> {
+	decrement() {
+		this.properties.decrementCounter();
+	}
+
+	increment() {
+		this.properties.incrementCounter();
+	}
+
+	render() {
+		return v('span', [
+			v('button', { onclick: this.decrement, disabled: this.properties.counter === 0 }, [ 'decrement' ]),
+			v('span', [ ` Counter ${this.properties.counter} ` ]),
+			v('button', { onclick: this.increment }, [ 'increment' ])
+		]);
+	}
+}
+
+// binding the redux injector and the widget together, specifying a function that injects attributes
+// from the store into the widget as properties
+const ReduxExampleContainer = Container(ReduxExample, 'redux-store', { getProperties: (store: Store<any>, properties: any) => {
+	const state = store.getState();
+
+	function incrementCounter() {
+		store.dispatch({ type: 'INCREMENT_COUNTER' });
+	}
+
+	function decrementCounter() {
+		store.dispatch({ type: 'DECREMENT_COUNTER' });
+	}
+	return {
+		counter: state.counter,
+		incrementCounter,
+		decrementCounter
+	};
+}});
+
+// append the widget
+const Projector = ProjectorMixin(ReduxExampleContainer);
+const projector = new Projector();
+projector.append();
+```
 
 ## How do I use this package?
 
