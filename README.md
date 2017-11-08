@@ -57,12 +57,11 @@ For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/ty
 
 `ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `registry`.
 
-An injector can be defined in the registry, which is then registered with the `Router`, and provided to the `Projector` as one of its properties. This is demonstrated in the example below.
+An injector can be defined in the registry, which is then provided to the `Projector` as one of its properties. The example below demonstrates this. It also enables [Redux DevTools Extension](http://extension.remotedev.io/) by passing `global.__REDUX_DEVTOOLS_EXTENSION__()` to `createStore`.
 
 ```typescript
 import global from '@dojo/shim/global';
 import { ProjectorMixin } from '@dojo/widget-core/mixins/Projector';
-import { registerRouterInjector } from '@dojo/routing/RouterInjector';
 import { ReduxInjector } from '@dojo/interop/redux/ReduxInjector';
 import { Registry } from '@dojo/widget-core/Registry';
 
@@ -81,23 +80,10 @@ const registry = new Registry();
 const store = createStore(todoReducer, defaultState, global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__());
 registry.defineInjector('application-state', new ReduxInjector(store));
 
-const config = [
-	{
-		path: '{filter}',
-		outlet: 'filter',
-		defaultParams: {
-			filter: 'all'
-		},
-		defaultRoute: true
-	}
-];
-
-const router = registerRouterInjector(config, registry);
 const Projector = ProjectorMixin(TodoAppContainer);
 const projector = new Projector();
 projector.setProperties({ registry });
 projector.append();
-router.start();
 ```
 
 ## How do I use this package?
