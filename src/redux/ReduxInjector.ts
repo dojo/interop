@@ -14,7 +14,7 @@ export class ReduxInjector<S = any> extends Injector<Store<S>> {
 	constructor(store: Store<S>) {
 		super(store);
 		store.subscribe(() => {
-			this.emit({ type: 'invalidated' });
+			this.emit({ type: 'invalidate' });
 		});
 	}
 

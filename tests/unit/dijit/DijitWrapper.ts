@@ -1,5 +1,5 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
 import harness from '@dojo/test-extras/harness';
 import { stub } from 'sinon';
 import DijitWrapper from '../../../src/dijit/DijitWrapper';
@@ -37,9 +37,7 @@ class ContainerMockDijit extends MockDijit {
 	public addChild() { }
 }
 
-registerSuite({
-	name: 'dijit/DijitWrapper',
-
+registerSuite('dijit/DijitWrapper', {
 	'a wrapped dijit should create an empty vnode'() {
 		const widget = harness(DijitWrapper(MockDijit));
 		widget.expectRender(v('div', { key: 'root' }, []), 'should have created an empty node');
@@ -61,15 +59,6 @@ registerSuite({
 			w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
 			w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
 		]));
-
-		const dijit = new MockDijit({});
-
-		widget.callListener('onInstantiate', {
-			args: [ dijit ],
-			key: 'foo'
-		});
-		widget.destroy();
-		assert.isFalse(lastDestroyPreserveDom, 'wrapper should not preserve Dijit DOM');
 	},
 
 	'a wrapped dijit should render supplied key'() {

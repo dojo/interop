@@ -1,15 +1,14 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
 import { ReduxInjector } from './../../../src/redux/ReduxInjector';
 import { createStore } from 'redux';
 
-registerSuite({
-	name: 'ReduxInjector',
+registerSuite('ReduxInjector', {
 	reduxInjector() {
 		const store = createStore((state) => state);
 		const injector = new ReduxInjector(store);
 		let injectorInvalidated = false;
-		injector.on('invalidated', () => {
+		injector.on('invalidate', () => {
 			injectorInvalidated = true;
 		});
 		store.dispatch({ type: 'TEST' });

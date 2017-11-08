@@ -25,16 +25,16 @@
     "test": "grunt test"
   },
   "peerDependencies": {
-    "@dojo/core": "next",
-    "@dojo/has": "next",
-    "@dojo/i18n": "next",
-    "@dojo/shim": "next",
-    "@dojo/widget-core": "next"
+    "@dojo/core": "~0.1.0",
+    "@dojo/has": "~0.1.0",
+    "@dojo/i18n": "~0.1.0",
+    "@dojo/shim": "~0.1.0",
+    "@dojo/widget-core": "~0.2.0"
   },
   "devDependencies": {
-    "@dojo/interfaces": "next",
-    "@dojo/loader": "next",
-    "@dojo/test-extras": "next",
+    "@dojo/interfaces": "~0.1.0",
+    "@dojo/loader": "~0.1.0",
+    "@dojo/test-extras": "~0.2.0",
     "@types/chai": "4.0.*",
     "@types/glob": "5.0.*",
     "@types/grunt": "0.4.*",
@@ -43,9 +43,9 @@
     "codecov.io": "0.1.6",
     "grunt": "~1.0.1",
     "grunt-dojo2": "latest",
-    "intern": "^3.4.6",
+    "intern": "^4.0.1",
     "sinon": "^2.3.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.5.3"
   },
   "optionalDependencies": {
     "redux": "^3.7.2"
