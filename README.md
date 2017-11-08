@@ -55,86 +55,49 @@ For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/ty
 
 ### ReduxInjector
 
-`ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `Container` pattern.
+`ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `registry`.
 
-An injector can be defined in the registry and then a `Container` can be used to inject the store, as shown in the example below.
+An injector can be defined in the registry, which is then registered with the `Router`, and provided to the `Projector` as one of its properties. This is demonstrated in the example below.
 
 ```typescript
-import { WidgetBase } from '@dojo/widget-core/WidgetBase';
-import { registry, v } from '@dojo/widget-core/d';
-import { Injector } from '@dojo/widget-core/Injector';
-import { Container } from '@dojo/widget-core/Container';
+import global from '@dojo/shim/global';
 import { ProjectorMixin } from '@dojo/widget-core/mixins/Projector';
-import { ReduxInjector } from '@dojo/interop/redux';
+import { registerRouterInjector } from '@dojo/routing/RouterInjector';
+import { ReduxInjector } from '@dojo/interop/redux/ReduxInjector';
+import { Registry } from '@dojo/widget-core/Registry';
+
+import { TodoAppContainer } from './containers/TodoAppContainer';
 import { createStore } from 'redux';
+import { todoReducer } from './reducers';
 
-// the reducer for the example state
-function reducer(state: any = { counter: 0 }, { type, payload }: any) {
-	switch (type) {
-		case 'INCREMENT_COUNTER':
-			return { counter: state.counter + 1 };
-		case 'DECREMENT_COUNTER':
-			return { counter: state.counter - 1 };
-		default:
-			return state;
+const defaultState = {
+	todos: [],
+	currentTodo: '',
+	activeCount: 0,
+	completedCount: 0
+};
+
+const registry = new Registry();
+const store = createStore(todoReducer, defaultState, global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__());
+registry.defineInjector('application-state', new ReduxInjector(store));
+
+const config = [
+	{
+		path: '{filter}',
+		outlet: 'filter',
+		defaultParams: {
+			filter: 'all'
+		},
+		defaultRoute: true
 	}
-}
+];
 
-// create the redux store with reducers
-const store = createStore(reducer);
-
-// Defines the injector in the registry
-registry.define('redux-store', Injector(ReduxInjector, store));
-
-// properties for the example widget
-interface ReduxExampleProperties {
-	counter: number;
-	incrementCounter: () => void;
-	decrementCounter: () => void;
-}
-
-// example widget
-class ReduxExample extends WidgetBase<ReduxExampleProperties> {
-	decrement() {
-		this.properties.decrementCounter();
-	}
-
-	increment() {
-		this.properties.incrementCounter();
-	}
-
-	render() {
-		return v('span', [
-			v('button', { onclick: this.decrement, disabled: this.properties.counter === 0 }, [ 'decrement' ]),
-			v('span', [ ` Counter ${this.properties.counter} ` ]),
-			v('button', { onclick: this.increment }, [ 'increment' ])
-		]);
-	}
-}
-
-// binding the redux injector and the widget together, specifying a function that injects attributes
-// from the store into the widget as properties
-const ReduxExampleContainer = Container(ReduxExample, 'redux-store', { getProperties: (store: Store<any>, properties: any) => {
-	const state = store.getState();
-
-	function incrementCounter() {
-		store.dispatch({ type: 'INCREMENT_COUNTER' });
-	}
-
-	function decrementCounter() {
-		store.dispatch({ type: 'DECREMENT_COUNTER' });
-	}
-	return {
-		counter: state.counter,
-		incrementCounter,
-		decrementCounter
-	};
-}});
-
-// append the widget
-const Projector = ProjectorMixin(ReduxExampleContainer);
+const router = registerRouterInjector(config, registry);
+const Projector = ProjectorMixin(TodoAppContainer);
 const projector = new Projector();
+projector.setProperties({ registry });
 projector.append();
+router.start();
 ```
 
 ## How do I use this package?
