@@ -77,7 +77,7 @@ const defaultState = {
 };
 
 const registry = new Registry();
-const store = createStore(todoReducer, defaultState, global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(todoReducer, defaultState);
 registry.defineInjector('application-state', new ReduxInjector(store));
 
 const Projector = ProjectorMixin(TodoAppContainer);
