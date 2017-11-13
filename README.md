@@ -57,7 +57,7 @@ For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/ty
 
 `ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `registry`.
 
-An injector can be defined in the registry, which is then provided to the `Projector` as one of its properties. The example below demonstrates this. It also enables [Redux DevTools Extension](http://extension.remotedev.io/) by passing `global.__REDUX_DEVTOOLS_EXTENSION__()` to `createStore`.
+An injector can be defined in the registry, which is then provided to the `Projector` as one of its properties. This is demonstrated in the example below.
 
 ```typescript
 import global from '@dojo/shim/global';
