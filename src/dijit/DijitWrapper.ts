@@ -1,4 +1,3 @@
-import { createHandle } from '@dojo/core/lang';
 import { assign } from '@dojo/shim/object';
 import { isWNode, v } from '@dojo/widget-core/d';
 import { Constructor, DNode, HNode, WNode } from '@dojo/widget-core/interfaces';
@@ -62,7 +61,6 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			if (!this._dijit) {
 				const dijit = this._dijit = new DijitWrapper.Dijit(params as Partial<D>);
 				onInstantiate && onInstantiate(dijit);
-				this.own(createHandle(() => dijit.destroy()));
 			}
 			else {
 				this._updateDijit(params);
@@ -86,6 +84,10 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			}
 
 			return onInstantiate ? this.children : v(DijitWrapper.tagName, { key }, this.children);
+		}
+
+		protected onDetach(): void {
+			this._dijit && this._dijit.destroy();
 		}
 
 		/**
