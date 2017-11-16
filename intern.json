@@ -22,6 +22,7 @@
 					{ "name": "cldr-data", "location": "node_modules/cldr-data" },
 					{ "name": "cldrjs", "location": "node_modules/cldrjs" },
 					{ "name": "globalize", "location": "node_modules/globalize", "main": "dist/globalize" },
+					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" },
 					{ "name": "web-animations-js", "location": "node_modules/web-animations-js" }
 				],
 				"map": {
