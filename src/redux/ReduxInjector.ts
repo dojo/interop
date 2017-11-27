@@ -2,8 +2,8 @@ import { Store } from 'redux';
 import { Injector } from '@dojo/widget-core/Injector';
 
 export interface ReduxInjectorPayload<S, O> {
-	extraOptions?: O;
 	store: Store<S>;
+	extraOptions?: O;
 }
 
 /**
