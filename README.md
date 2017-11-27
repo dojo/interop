@@ -55,7 +55,10 @@ For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/ty
 
 ### ReduxInjector
 
-`ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `registry`.
+`ReduxInjector` can be used to bind a redux store and Dojo 2 widgets using the `registry`. The value returned by `getProperties` is an object containing two properties:
+
+* `store` - the actual Redux store passed as the first argument to the `ReduxInjector` constructor.
+* `extraOptions` - an additional options object that can be passed as an optional second argument to the `ReduxInjector` constructor.
 
 An injector can be defined in the registry, which is then provided to the `Projector` as one of its properties. This is demonstrated in the example below.
 

@@ -16,8 +16,9 @@ registerSuite('ReduxInjector', {
 	},
 	get() {
 		const store = createStore((state) => state);
-		const injector = new ReduxInjector(store);
-		assert.strictEqual(injector.get(), store);
+		const extraOptions = {};
+		const injector = new ReduxInjector(store, extraOptions);
+		assert.deepEqual(injector.get(), { store, extraOptions });
 	},
 	set() {
 		const store = createStore((state) => state);
