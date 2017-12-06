@@ -67,7 +67,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 			}
 			const dijit = this._dijit!;
 			if (!onInstantiate) {
-				const node = this.meta(DomNode).get(key);
+				const node = this.meta(DomNode).get(key) as HTMLElement;
 				if (node) {
 					// We need to accommodate for the node changing, because it is theoretically impossible,
 					// but have been unable to create the right conditions where this would actually occur
