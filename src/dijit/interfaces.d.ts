@@ -50,7 +50,10 @@ export interface DijitWrapperProperties extends WidgetProperties {
 	onInstantiate?(dijit: Dijit): void;
 }
 
-export class DijitWrapper<D extends Dijit> extends WidgetBase<Partial<D> & DijitWrapperProperties, WNode<DijitWrapper<Dijit>>> {
+export class DijitWrapper<D extends Dijit> extends WidgetBase<
+	Partial<D> & DijitWrapperProperties,
+	WNode<DijitWrapper<Dijit>>
+> {
 	/**
 	 * A method that is decorated to be called after the render that will inject `onInstantiate` into children `DijitWrapper`s
 	 * @param result The render result

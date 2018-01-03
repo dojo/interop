@@ -1,3 +1,1 @@
-export {
-	/* provide the public API here */
-};
+export /* provide the public API here */{};

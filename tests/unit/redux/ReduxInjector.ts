@@ -23,8 +23,12 @@ registerSuite('ReduxInjector', {
 	set() {
 		const store = createStore((state) => state);
 		const injector = new ReduxInjector(store);
-		assert.throws(() => {
-			injector.set();
-		}, TypeError, 'Cannot perform .set() on ReduxInjector');
+		assert.throws(
+			() => {
+				injector.set();
+			},
+			TypeError,
+			'Cannot perform .set() on ReduxInjector'
+		);
 	}
 });
