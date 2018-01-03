@@ -11,7 +11,7 @@ class MockDijit {
 	public srcNodeRef: HTMLElement;
 	public domNode: HTMLElement;
 
-	constructor(params: Object, srcRefNode?: string | Node) { }
+	constructor(params: Object, srcRefNode?: string | Node) {}
 
 	public destroy(preserveDom = false) {}
 
@@ -26,11 +26,11 @@ class MockDijit {
 		return this;
 	}
 
-	public startup() { }
+	public startup() {}
 }
 
 class ContainerMockDijit extends MockDijit {
-	public addChild() { }
+	public addChild() {}
 }
 
 registerSuite('dijit/DijitWrapper', {
@@ -50,11 +50,13 @@ registerSuite('dijit/DijitWrapper', {
 			w(MockDijitWidget, { key: 'baz' })
 		]);
 
-		widget.expectRender(v('div', { key: 'root' }, [
-			w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
-		]));
+		widget.expectRender(
+			v('div', { key: 'root' }, [
+				w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
+				w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
+				w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
+			])
+		);
 	},
 
 	'a wrapped dijit should render supplied key'() {
@@ -97,7 +99,11 @@ registerSuite('dijit/DijitWrapper', {
 		// IE11 has some strange GC behaviours which sometimes deferences the constructor, thereby holding a
 		// direct reference should avoid this issue.  See: https://github.com/dojo/interop/issues/10
 		const DijitWidget = DijitWrapper(MockDijit, 'span');
-		assert.strictEqual((DijitWidget as any).Dijit, MockDijit, 'The constructor should equal the passed constructor');
+		assert.strictEqual(
+			(DijitWidget as any).Dijit,
+			MockDijit,
+			'The constructor should equal the passed constructor'
+		);
 		assert.strictEqual((DijitWidget as any).tagName, 'span', 'The tag name should equal the passed tag name');
 	}
 });

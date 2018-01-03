@@ -32,7 +32,10 @@ const DEFAULT_KEY = 'root';
  * @param Dijit The constructor function for the Dijit
  * @param tagName The tag name that should be used when creating the DOM for the dijit. Defaults to `div`.
  */
-export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagName = 'div'): Constructor<DijitWrapperClass<D>> {
+export function DijitWrapper<D extends Dijit>(
+	Dijit: DijitConstructor<D>,
+	tagName = 'div'
+): Constructor<DijitWrapperClass<D>> {
 	class DijitWrapper extends WidgetBase<Partial<D> & DijitWrapperProperties, WNode<DijitWrapperClass<D>>> {
 		private _dijit: D | undefined;
 		private _node: HTMLElement | undefined;
@@ -41,7 +44,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 		 * Temporary logic until [dojo/widget-core#670](https://github.com/dojo/widget-core/issues/670) is delivered
 		 * @param params The paramters for the Dijit
 		 */
-		private _updateDijit(params: { [param: string]: any; }) {
+		private _updateDijit(params: { [param: string]: any }) {
 			// not null assertion, because this can only be called when `_dijit` is assigned
 			this._dijit!.set(params);
 		}
@@ -59,10 +62,9 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 		protected render() {
 			const { bind, key = DEFAULT_KEY, onInstantiate, registry, ...params } = this.properties as DijitProperties;
 			if (!this._dijit) {
-				const dijit = this._dijit = new DijitWrapper.Dijit(params as Partial<D>);
+				const dijit = (this._dijit = new DijitWrapper.Dijit(params as Partial<D>));
 				onInstantiate && onInstantiate(dijit);
-			}
-			else {
+			} else {
 				this._updateDijit(params);
 			}
 			const dijit = this._dijit!;
@@ -72,7 +74,7 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 					// We need to accommodate for the node changing, because it is theoretically impossible,
 					// but have been unable to create the right conditions where this would actually occur
 					/* istanbul ignore else */
-					if (!this._node || (this._node !== node)) {
+					if (!this._node || this._node !== node) {
 						dijit.placeAt(node, 'replace');
 						/* istanbul ignore else */
 						if (!this._node) {
@@ -114,11 +116,13 @@ export function DijitWrapper<D extends Dijit>(Dijit: DijitConstructor<D>, tagNam
 				}
 			}
 
-			Array.isArray(result) ? result.forEach(decorateChild) : result.children && result.children.forEach(decorateChild);
+			Array.isArray(result)
+				? result.forEach(decorateChild)
+				: result.children && result.children.forEach(decorateChild);
 
 			return result;
 		}
-	};
+	}
 
 	return DijitWrapper;
 }
