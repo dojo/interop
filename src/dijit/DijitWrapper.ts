@@ -1,6 +1,6 @@
 import { assign } from '@dojo/shim/object';
 import { isWNode, v } from '@dojo/widget-core/d';
-import { Constructor, DNode, HNode, WNode } from '@dojo/widget-core/interfaces';
+import { Constructor, DNode, VNode, WNode } from '@dojo/widget-core/interfaces';
 import { WidgetBase } from '@dojo/widget-core/WidgetBase';
 import afterRender from '@dojo/widget-core/decorators/afterRender';
 import Base from '@dojo/widget-core/meta/Base';
@@ -99,7 +99,7 @@ export function DijitWrapper<D extends Dijit>(
 		 * @returns The post decorated values
 		 */
 		@afterRender()
-		public decorateChildProperties(result: HNode | DNode[]) {
+		public decorateChildProperties(result: VNode | DNode[]) {
 			if (!this._dijit || !this._dijit.addChild) {
 				return result;
 			}
