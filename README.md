@@ -8,6 +8,25 @@
 
 Package that provides various bindings to enable interoperability for external libraries and Dojo 2 packages.
 
+-----
+
+- [Installation](#installation)
+- [Features](#features)
+  - [DijitWrapper](#dijitwrapper)
+  - [ReduxInjector](#reduxinjector)
+- [How Do I Contribute?](#how-do-i-contribute)
+  - [Code Style](#code-style)
+- [Testing](#testing)
+- [Licensing Information](#licensing-information)
+
+## Installation
+
+To use `@dojo/interop`, install the package using npm:
+
+```shell
+npm install @dojo/interop
+```
+
 ## Features
 
 ### DijitWrapper
@@ -26,11 +45,11 @@ import WidgetBase from '@dojo/widget-core/WidgetBase';
 const Calendar = DijitWrapper(CalendarDijit);
 
 class App extends WidgetBase {
-  private _onCalendarChange = (date: Date) => {
+  private _onCalendarChange(date: Date) {
     console.log('Date selected:', date);
   }
 
-  render() {
+  protected render() {
     return v('div', { key: 'root' }, [
       w(Calendar, {
         key: 'calendar1',
@@ -64,11 +83,11 @@ An injector can be defined in the registry, which is then provided to the `Proje
 
 ```typescript
 import global from '@dojo/shim/global';
-import { ProjectorMixin } from '@dojo/widget-core/mixins/Projector';
-import { ReduxInjector } from '@dojo/interop/redux/ReduxInjector';
-import { Registry } from '@dojo/widget-core/Registry';
+import ProjectorMixin from '@dojo/widget-core/mixins/Projector';
+import ReduxInjector from '@dojo/interop/redux/ReduxInjector';
+import Registry from '@dojo/widget-core/Registry';
 
-import { TodoAppContainer } from './containers/TodoAppContainer';
+import TodoAppContainer from './containers/TodoAppContainer';
 import { createStore } from 'redux';
 import { todoReducer } from './reducers';
 
@@ -87,14 +106,6 @@ const Projector = ProjectorMixin(TodoAppContainer);
 const projector = new Projector();
 projector.setProperties({ registry });
 projector.append();
-```
-
-## How do I use this package?
-
-To use `@dojo/interop`, install the package using npm:
-
-```
-npm install @dojo/interop
 ```
 
 ## How do I contribute?
@@ -135,9 +146,5 @@ or
 `grunt test:saucelabs`
 
 ## Licensing information
-
-TODO: If third-party code was used to write this library, make a list of project names and licenses here
-
-* [Third-party lib one](https//github.com/foo/bar) ([New BSD](http://opensource.org/licenses/BSD-3-Clause))
 
 © [JS Foundation](https://js.foundation/) & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) and [Apache 2.0](https://opensource.org/licenses/Apache-2.0) licenses.
