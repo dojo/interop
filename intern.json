@@ -23,7 +23,9 @@
 					{ "name": "cldrjs", "location": "node_modules/cldrjs" },
 					{ "name": "globalize", "location": "node_modules/globalize", "main": "dist/globalize" },
 					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" },
-					{ "name": "web-animations-js", "location": "node_modules/web-animations-js" }
+					{ "name": "web-animations-js", "location": "node_modules/web-animations-js" },
+					{ "name": "css-select-umd", "location": "node_modules/css-select-umd", "main": "dist/index.js" },
+					{ "name": "diff", "location": "node_modules/diff", "main": "dist/diff.js" }
 				],
 				"map": {
 					"globalize": {
