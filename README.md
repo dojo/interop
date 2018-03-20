@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/dojo-<< package-name >>.svg)](http://badge.fury.io/js/%40dojo%2Finterop)
 -->
 
-Package that provides various bindings to enable interoperability for external libraries and Dojo 2 packages.
+A package that provides various bindings to enable interoperability for external libraries and Dojo 2 packages.
 
 -----
 
@@ -31,7 +31,7 @@ npm install @dojo/interop
 
 ### DijitWrapper
 
-`DijitWrapper` is a mixin class that can convert a Dojo 1 based Dijit and allow it to integrate with the Dojo 2 widgeting system.
+`DijitWrapper` is a mixin class that can convert a Dojo 1 based Dijit and allows it to integrate with the Dojo 2 widget system.
 
 The wrapper takes a Dijit constructor function as its input and returns a Dojo 2 widget.  For example, to take the `dijit/Calendar`
 and place it in a Dojo 2 `App` widget would look something like this:
@@ -65,12 +65,12 @@ export default App;
 
 The result, when displayed through a projector, is a Dijit Calendar which will log the new date to the console every time the date is changed.
 
-It is also possible to use a Dijit container, like `dijit/layout/ContentPane`, but children of a wrapped Dijit widget can only other
-wrapped Dijits.  You cannot place virtual DOM children (nodes from `v()`) or other non Dijit widgets as children.
+It is also possible to use a Dijit container, like `dijit/layout/ContentPane`, but children of a wrapped Dijit widget can only be other
+wrapped Dijits.  You cannot place virtual DOM children (nodes from `v()`) or other non-Dijit widgets as children.
 
-The `DijitWrapper` takes an optional second argument, `tagName`, which should be used when the widgeting system needs to create a DOM node to root a widget.  By default it uses `div`.
+The `DijitWrapper` takes an optional second argument, `tagName`, which should be used when the widget system needs to create a DOM node to root a widget.  By default it uses `div`.
 
-For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/typings](https://github.com/dojo/typings) and can be installed via npm via `npm install dojo-typings`.  User created Dijits may be used with the `DijitWrapper` provide they adhere to the minimum interface described in the `/dijit/interfaces.d.ts` that is part of this package.
+For most existing Dojo 1 Dijits, the TypeScript typings can be found at [dojo/typings](https://github.com/dojo/typings) and can be installed via npm via `npm install dojo-typings`.  User-created Dijits may be used with the `DijitWrapper` provide they adhere to the minimum interface described in the `/dijit/interfaces.d.ts` that is part of this package.
 
 ### ReduxInjector
 
@@ -115,7 +115,7 @@ Contributing Guidelines.
 
 ### Code Style
 
-This repository uses [`prettier`](https://prettier.io/) for code styling rules and formatting. A pre-commit hook is installed automatically and configured to run `prettier` against all staged files as per the configuration in the projects `package.json`.
+This repository uses [`prettier`](https://prettier.io/) for code styling rules and formatting. A pre-commit hook is installed automatically and configured to run `prettier` against all staged files as per the configuration in the project's `package.json`.
 
 An additional npm script to run `prettier` (with write set to `true`) against all `src` and `test` project files is available by running:
 
@@ -147,4 +147,4 @@ or
 
 ## Licensing information
 
-© [JS Foundation](https://js.foundation/) & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) and [Apache 2.0](https://opensource.org/licenses/Apache-2.0) licenses.
+© 2018 [JS Foundation](https://js.foundation/) & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) and [Apache 2.0](https://opensource.org/licenses/Apache-2.0) licenses.

@@ -35,64 +35,57 @@ class ContainerMockDijit extends MockDijit {
 
 registerSuite('dijit/DijitWrapper', {
 	'a wrapped dijit should create an empty vnode'() {
-		const widget = harness(DijitWrapper(MockDijit));
-		widget.expectRender(v('div', { key: 'root' }, []), 'should have created an empty node');
-		widget.destroy();
+		const h = harness(() => w(DijitWrapper(MockDijit), {}));
+		h.expect(() => v('div', { key: 'root' }, []));
 	},
 
 	'a wrapped dijit with children dijit should render children'() {
 		const ContainerDijitWidget = DijitWrapper(ContainerMockDijit);
 		const MockDijitWidget = DijitWrapper(MockDijit);
-		const widget = harness(ContainerDijitWidget);
-		widget.setChildren([
-			w(MockDijitWidget, { key: 'foo' }),
-			w(MockDijitWidget, { key: 'bar' }),
-			w(MockDijitWidget, { key: 'baz' })
-		]);
+		const h = harness(() =>
+			w(ContainerDijitWidget, {}, [
+				w(MockDijitWidget, { key: 'foo' }),
+				w(MockDijitWidget, { key: 'bar' }),
+				w(MockDijitWidget, { key: 'baz' })
+			])
+		);
 
-		widget.expectRender(
+		h.expect(() =>
 			v('div', { key: 'root' }, [
-				w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
-				w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
-				w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
+				w(MockDijitWidget, { key: 'foo', onInstantiate: () => {} }),
+				w(MockDijitWidget, { key: 'bar', onInstantiate: () => {} }),
+				w(MockDijitWidget, { key: 'baz', onInstantiate: () => {} })
 			])
 		);
 	},
 
 	'a wrapped dijit should render supplied key'() {
-		const widget = harness(DijitWrapper(MockDijit));
-		widget.setProperties({
-			key: 'foo'
-		});
-		widget.expectRender(v('div', { key: 'foo' }, []), 'should have created an empty node');
-		widget.destroy();
+		const h = harness(() => w(DijitWrapper(MockDijit), { key: 'foo' }));
+		h.expect(() => v('div', { key: 'foo' }, []));
 	},
 
 	'a contained dijit with children should render flat array of its children'() {
 		const ContainerDijitWidget = DijitWrapper(ContainerMockDijit);
 		const MockDijitWidget = DijitWrapper(MockDijit);
-		const widget = harness(ContainerDijitWidget);
 		const onInstantiate = stub();
-		widget.setProperties({
-			onInstantiate
-		});
-		widget.setChildren([
-			w(MockDijitWidget, { key: 'foo' }),
-			w(MockDijitWidget, { key: 'bar' }),
-			w(MockDijitWidget, { key: 'baz' })
-		]);
+		const h = harness(() =>
+			w(ContainerDijitWidget, { onInstantiate }, [
+				w(MockDijitWidget, { key: 'foo' }),
+				w(MockDijitWidget, { key: 'bar' }),
+				w(MockDijitWidget, { key: 'baz' })
+			])
+		);
 
-		widget.expectRender([
-			w(MockDijitWidget, { key: 'foo', onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'bar', onInstantiate: widget.listener } as any),
-			w(MockDijitWidget, { key: 'baz', onInstantiate: widget.listener } as any)
+		h.expect(() => [
+			w(MockDijitWidget, { key: 'foo', onInstantiate: () => {} }),
+			w(MockDijitWidget, { key: 'bar', onInstantiate: () => {} }),
+			w(MockDijitWidget, { key: 'baz', onInstantiate: () => {} })
 		]);
-		widget.destroy();
 	},
 
 	'a dijit wrapper should use tag name provided when rendering'() {
-		const widget = harness(DijitWrapper(MockDijit, 'span'));
-		widget.expectRender(v('span', { key: 'root' }, []));
+		const h = harness(() => w(DijitWrapper(MockDijit, 'span'), {}));
+		h.expect(() => v('span', { key: 'root' }, []));
 	},
 
 	'mixed in classes hold reference to Dijit constructor and tagName'() {
