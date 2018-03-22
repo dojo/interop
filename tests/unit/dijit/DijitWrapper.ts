@@ -7,9 +7,9 @@ import DijitWrapper from '../../../src/dijit/DijitWrapper';
 import { v, w } from '@dojo/widget-core/d';
 
 class MockDijit {
-	public id: string;
-	public srcNodeRef: HTMLElement;
-	public domNode: HTMLElement;
+	public id: string | undefined;
+	public srcNodeRef: HTMLElement | undefined;
+	public domNode: HTMLElement | undefined;
 
 	constructor(params: Object, srcRefNode?: string | Node) {}
 
