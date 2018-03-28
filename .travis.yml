@@ -6,7 +6,7 @@ env:
   global:
   # Please get your own free key if you want to test yourself
   - BROWSERSTACK_USERNAME: dylanschiemann2
-  - BROWSERSTACK_ACCESS_KEY: 2upt88qsxsqqeukQvecu
+  - BROWSERSTACK_ACCESS_KEY: 4Q2g8YAc9qeZzB2hECnS
 install:
 - travis_retry npm install grunt-cli
 - travis_retry npm install
