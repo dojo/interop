@@ -1,0 +1,2799 @@
+{
+	"id": 0,
+	"name": "@dojo/interop",
+	"kind": 0,
+	"flags": {
+		"__visited__": true
+	},
+	"children": [
+		{
+			"id": 2,
+			"name": "\"src/dijit/DijitWrapper\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "src/dijit/DijitWrapper.ts",
+			"children": [
+				{
+					"id": 3,
+					"name": "DomNode",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"__visited__": true
+					},
+					"comment": {
+						"shortText": "An internal meta provider that provides the rendered DOM node on _root_ Dijits"
+					},
+					"children": [
+						{
+							"id": 9,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 10,
+									"name": "new DomNode",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 11,
+											"name": "properties",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "WidgetMetaProperties"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "DomNode",
+										"id": 3
+									},
+									"overwrites": {
+										"type": "reference",
+										"name": "Destroyable.__constructor"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Base.__constructor"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 7,
+									"character": 53
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"name": "Destroyable.__constructor"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.__constructor"
+							}
+						},
+						{
+							"id": 8,
+							"name": "_bind",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isProtected": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 7,
+									"character": 19
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "WidgetBaseInterface"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base._bind"
+							}
+						},
+						{
+							"id": 7,
+							"name": "nodeHandler",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isProtected": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 5,
+									"character": 25
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "NodeHandlerInterface"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.nodeHandler"
+							}
+						},
+						{
+							"id": 20,
+							"name": "afterRender",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 21,
+									"name": "afterRender",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Base.afterRender"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 12,
+									"character": 15
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.afterRender"
+							}
+						},
+						{
+							"id": 25,
+							"name": "destroy",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 26,
+									"name": "destroy",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"comment": {
+										"shortText": "Destrpys all handers registered for the instance",
+										"returns": "a promise that resolves once all handles have been destroyed\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Destroyable.destroy"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/core/Destroyable.d.ts",
+									"line": 23,
+									"character": 11
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Destroyable.destroy"
+							}
+						},
+						{
+							"id": 4,
+							"name": "get",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 5,
+									"name": "get",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 6,
+											"name": "key",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "reference",
+												"name": "Element"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/dijit/DijitWrapper.ts",
+									"line": 13,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 15,
+							"name": "getNode",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isProtected": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 16,
+									"name": "getNode",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 17,
+											"name": "key",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Element"
+											},
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											}
+										]
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Base.getNode"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 10,
+									"character": 21
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.getNode"
+							}
+						},
+						{
+							"id": 12,
+							"name": "has",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 13,
+									"name": "has",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 14,
+											"name": "key",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Base.has"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 9,
+									"character": 7
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.has"
+							}
+						},
+						{
+							"id": 18,
+							"name": "invalidate",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isProtected": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 19,
+									"name": "invalidate",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Base.invalidate"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/meta/Base.d.ts",
+									"line": 11,
+									"character": 24
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Base.invalidate"
+							}
+						},
+						{
+							"id": 22,
+							"name": "own",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 23,
+									"name": "own",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"comment": {
+										"shortText": "Register handles for the instance that will be destroyed when `this.destroy` is called",
+										"returns": "a handle for the handle, removes the handle for the instance and calls destroy\n"
+									},
+									"parameters": [
+										{
+											"id": 24,
+											"name": "handles",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "Handle"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"name": "Handle"
+														}
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "Handle"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "Destroyable.own"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/core/Destroyable.d.ts",
+									"line": 17,
+									"character": 7
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Destroyable.own"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								9
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								8,
+								7
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								20,
+								25,
+								4,
+								15,
+								12,
+								18,
+								22
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/dijit/DijitWrapper.ts",
+							"line": 12,
+							"character": 13
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"name": "Base"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"name": "WidgetMetaBase"
+						}
+					]
+				},
+				{
+					"id": 27,
+					"name": "DijitProperties",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"__visited__": true
+					},
+					"comment": {
+						"shortText": "Used to make it easier to peel off some values when spreading the `widget.properties` to dijit params"
+					},
+					"indexSignature": [
+						{
+							"id": 28,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"__visited__": true
+							},
+							"comment": {
+								"shortText": "Used to make it easier to peel off some values when spreading the `widget.properties` to dijit params"
+							},
+							"parameters": [
+								{
+									"id": 29,
+									"name": "param",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 33,
+							"name": "key",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isOptional": true,
+								"__visited__": true
+							},
+							"comment": {
+								"shortText": "The key for a widget. Used to differentiate uniquely identify child widgets for\nrendering and instance management"
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/@dojo/widget-core/interfaces.d.ts",
+									"line": 257,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "WidgetProperties.key"
+							}
+						},
+						{
+							"id": 30,
+							"name": "onInstantiate",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isOptional": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 31,
+									"name": "onInstantiate",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"comment": {
+										"shortText": "A property that if present causes the DijitWrapper to call method with the instantiated `dijit`, instead of\nattempting to generate a DOM node to attach the `dijit` to.  Designed to be injected by a parent `dijit` so it\ncan append the child to itself."
+									},
+									"parameters": [
+										{
+											"id": 32,
+											"name": "dijit",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Dijit"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "DijitWrapperProperties.onInstantiate"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/dijit/interfaces.d.ts",
+									"line": 50,
+									"character": 14
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "DijitWrapperProperties.onInstantiate"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								33
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								30
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/dijit/DijitWrapper.ts",
+							"line": 21,
+							"character": 25
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"name": "DijitWrapperProperties"
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": "DEFAULT_KEY",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true,
+						"__visited__": true
+					},
+					"comment": {
+						"shortText": "Internal `key` constant"
+					},
+					"sources": [
+						{
+							"fileName": "src/dijit/DijitWrapper.ts",
+							"line": 28,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "stringLiteral",
+						"value": "root"
+					},
+					"defaultValue": "\"root\""
+				},
+				{
+					"id": 35,
+					"name": "DijitWrapper",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"signatures": [
+						{
+							"id": 36,
+							"name": "DijitWrapper",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"__visited__": true
+							},
+							"comment": {
+								"shortText": "Wrap a Dojo 1 Dijit, so that it can exist inside of the Dojo 2 widgeting system."
+							},
+							"typeParameter": [
+								{
+									"id": 37,
+									"name": "D",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Dijit"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 38,
+									"name": "Dijit",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"comment": {
+										"text": "The constructor function for the Dijit"
+									},
+									"type": {
+										"type": "reference",
+										"name": "DijitConstructor",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "D",
+												"constraint": {
+													"type": "reference",
+													"name": "Dijit"
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 39,
+									"name": "tagName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"comment": {
+										"text": "The tag name that should be used when creating the DOM for the dijit. Defaults to `div`.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\"div\""
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Constructor",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "DijitWrapperClass",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "D",
+												"constraint": {
+													"type": "reference",
+													"name": "Dijit"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/dijit/DijitWrapper.ts",
+							"line": 35,
+							"character": 28
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						3
+					]
+				},
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						27
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						34
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						35
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/dijit/DijitWrapper.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "\"src/main\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "src/main.ts",
+			"sources": [
+				{
+					"fileName": "src/main.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 40,
+			"name": "\"src/redux/ReduxInjector\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "src/redux/ReduxInjector.ts",
+			"children": [
+				{
+					"id": 41,
+					"name": "ReduxInjectorPayload",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"typeParameter": [
+						{
+							"id": 42,
+							"name": "S",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"__visited__": true
+							}
+						},
+						{
+							"id": 43,
+							"name": "O",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"__visited__": true
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 45,
+							"name": "extraOptions",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "src/redux/ReduxInjector.ts",
+									"line": 5,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "O",
+								"id": 43
+							}
+						},
+						{
+							"id": 44,
+							"name": "store",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "src/redux/ReduxInjector.ts",
+									"line": 4,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Store",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "S"
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								45,
+								44
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/redux/ReduxInjector.ts",
+							"line": 3,
+							"character": 37
+						}
+					]
+				},
+				{
+					"id": 46,
+					"name": "reduxInjectorFactory",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"signatures": [
+						{
+							"id": 47,
+							"name": "reduxInjectorFactory",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"__visited__": true
+							},
+							"comment": {
+								"shortText": "Injector for redux store"
+							},
+							"typeParameter": [
+								{
+									"id": 48,
+									"name": "S",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"__visited__": true
+									}
+								},
+								{
+									"id": 49,
+									"name": "O",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"__visited__": true
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 50,
+									"name": "store",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Store",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "S"
+											}
+										]
+									}
+								},
+								{
+									"id": 51,
+									"name": "extraOptions",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true,
+										"__visited__": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "O",
+										"id": 49
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "(Anonymous function)"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/redux/ReduxInjector.ts",
+							"line": 11,
+							"character": 36
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						41
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						46
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/redux/ReduxInjector.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 52,
+			"name": "\"tests/functional/all\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/functional/all.ts",
+			"children": [
+				{
+					"id": 53,
+					"name": "removeThis",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExported": true,
+						"isConst": true,
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/functional/all.ts",
+							"line": 1,
+							"character": 23
+						}
+					],
+					"type": {
+						"type": "unknown",
+						"name": "1"
+					},
+					"defaultValue": "1"
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						53
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "tests/functional/all.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 54,
+			"name": "\"tests/support/util\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/support/util.ts",
+			"children": [
+				{
+					"id": 55,
+					"name": "Thenable",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"comment": {
+						"shortText": "Thenable represents any object with a callable `then` property."
+					},
+					"typeParameter": [
+						{
+							"id": 56,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"__visited__": true
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 57,
+							"name": "then",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 58,
+									"name": "then",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"typeParameter": [
+										{
+											"id": 59,
+											"name": "U",
+											"kind": 131072,
+											"kindString": "Type parameter",
+											"flags": {
+												"__visited__": true
+											}
+										}
+									],
+									"parameters": [
+										{
+											"id": 60,
+											"name": "onFulfilled",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "reflection",
+														"declaration": {
+															"id": 61,
+															"name": "__type",
+															"kind": 65536,
+															"kindString": "Type literal",
+															"flags": {
+																"__visited__": true
+															},
+															"signatures": [
+																{
+																	"id": 62,
+																	"name": "__call",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {
+																		"__visited__": true
+																	},
+																	"parameters": [
+																		{
+																			"id": 63,
+																			"name": "value",
+																			"kind": 32768,
+																			"kindString": "Parameter",
+																			"flags": {
+																				"isOptional": true,
+																				"__visited__": true
+																			},
+																			"type": {
+																				"type": "reference",
+																				"name": "T",
+																				"id": 56
+																			}
+																		}
+																	],
+																	"type": {
+																		"type": "union",
+																		"types": [
+																			{
+																				"type": "typeParameter",
+																				"name": "U"
+																			},
+																			{
+																				"type": "reference",
+																				"name": "Thenable",
+																				"id": 55,
+																				"typeArguments": [
+																					{
+																						"type": "typeParameter",
+																						"name": "U"
+																					}
+																				]
+																			}
+																		]
+																	}
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"id": 64,
+											"name": "onRejected",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "reflection",
+														"declaration": {
+															"id": 65,
+															"name": "__type",
+															"kind": 65536,
+															"kindString": "Type literal",
+															"flags": {
+																"__visited__": true
+															},
+															"signatures": [
+																{
+																	"id": 66,
+																	"name": "__call",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {
+																		"__visited__": true
+																	},
+																	"parameters": [
+																		{
+																			"id": 67,
+																			"name": "error",
+																			"kind": 32768,
+																			"kindString": "Parameter",
+																			"flags": {
+																				"isOptional": true,
+																				"__visited__": true
+																			},
+																			"type": {
+																				"type": "intrinsic",
+																				"name": "any"
+																			}
+																		}
+																	],
+																	"type": {
+																		"type": "union",
+																		"types": [
+																			{
+																				"type": "typeParameter",
+																				"name": "U"
+																			},
+																			{
+																				"type": "reference",
+																				"name": "Thenable",
+																				"id": 55,
+																				"typeArguments": [
+																					{
+																						"type": "typeParameter",
+																						"name": "U"
+																					}
+																				]
+																			}
+																		]
+																	}
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "Thenable",
+										"id": 55,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "U"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/support/util.ts",
+									"line": 5,
+									"character": 5
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								57
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "tests/support/util.ts",
+							"line": 4,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 68,
+					"name": "isEventuallyRejected",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"signatures": [
+						{
+							"id": 69,
+							"name": "isEventuallyRejected",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"__visited__": true
+							},
+							"typeParameter": [
+								{
+									"id": 70,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"__visited__": true
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 71,
+									"name": "promise",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Thenable",
+										"id": 55,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "T"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Thenable",
+								"id": 55,
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "tests/support/util.ts",
+							"line": 8,
+							"character": 36
+						}
+					]
+				},
+				{
+					"id": 72,
+					"name": "throwImmediatly",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"__visited__": true
+					},
+					"signatures": [
+						{
+							"id": 73,
+							"name": "throwImmediatly",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"__visited__": true
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "tests/support/util.ts",
+							"line": 19,
+							"character": 31
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						55
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						68,
+						72
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "tests/support/util.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 124,
+			"name": "\"tests/unit/all\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/unit/all.ts",
+			"sources": [
+				{
+					"fileName": "tests/unit/all.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 77,
+			"name": "\"tests/unit/dijit/DijitWrapper\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/unit/dijit/DijitWrapper.ts",
+			"children": [
+				{
+					"id": 97,
+					"name": "ContainerMockDijit",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"__visited__": true
+					},
+					"children": [
+						{
+							"id": 103,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 104,
+									"name": "new ContainerMockDijit",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 105,
+											"name": "params",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Object"
+											}
+										},
+										{
+											"id": 106,
+											"name": "srcRefNode",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "reference",
+														"name": "Node"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "ContainerMockDijit",
+										"id": 97
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "MockDijit.__constructor",
+										"id": 82
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 12,
+									"character": 41
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.__constructor",
+								"id": 82
+							}
+						},
+						{
+							"id": 102,
+							"name": "domNode",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 12,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "HTMLElement"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.domNode",
+								"id": 81
+							}
+						},
+						{
+							"id": 100,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 10,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.id",
+								"id": 79
+							}
+						},
+						{
+							"id": 101,
+							"name": "srcNodeRef",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 11,
+									"character": 18
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "HTMLElement"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.srcNodeRef",
+								"id": 80
+							}
+						},
+						{
+							"id": 98,
+							"name": "addChild",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 99,
+									"name": "addChild",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 33,
+									"character": 16
+								}
+							]
+						},
+						{
+							"id": 107,
+							"name": "destroy",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 108,
+									"name": "destroy",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 109,
+											"name": "preserveDom",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											},
+											"defaultValue": "false"
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "MockDijit.destroy",
+										"id": 86
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 16,
+									"character": 15
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.destroy",
+								"id": 86
+							}
+						},
+						{
+							"id": 110,
+							"name": "placeAt",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 111,
+									"name": "placeAt",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 112,
+											"name": "node",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "HTMLElement"
+											}
+										},
+										{
+											"id": 113,
+											"name": "reference",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "MockDijit.placeAt",
+										"id": 89
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 18,
+									"character": 15
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.placeAt",
+								"id": 89
+							}
+						},
+						{
+							"id": 114,
+							"name": "set",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 115,
+									"name": "set",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "MockDijit.set",
+										"id": 93
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 25,
+									"character": 11
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.set",
+								"id": 93
+							}
+						},
+						{
+							"id": 116,
+							"name": "startup",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 117,
+									"name": "startup",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"inheritedFrom": {
+										"type": "reference",
+										"name": "MockDijit.startup",
+										"id": 95
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 29,
+									"character": 15
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MockDijit.startup",
+								"id": 95
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								103
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								102,
+								100,
+								101
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								98,
+								107,
+								110,
+								114,
+								116
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "tests/unit/dijit/DijitWrapper.ts",
+							"line": 32,
+							"character": 24
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"name": "MockDijit",
+							"id": 78
+						}
+					]
+				},
+				{
+					"id": 78,
+					"name": "MockDijit",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"__visited__": true
+					},
+					"children": [
+						{
+							"id": 82,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 83,
+									"name": "new MockDijit",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 84,
+											"name": "params",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Object"
+											}
+										},
+										{
+											"id": 85,
+											"name": "srcRefNode",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "reference",
+														"name": "Node"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "MockDijit",
+										"id": 78
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 12,
+									"character": 41
+								}
+							]
+						},
+						{
+							"id": 81,
+							"name": "domNode",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 12,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "HTMLElement"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							}
+						},
+						{
+							"id": 79,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 10,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							}
+						},
+						{
+							"id": 80,
+							"name": "srcNodeRef",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 11,
+									"character": 18
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "HTMLElement"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							}
+						},
+						{
+							"id": 86,
+							"name": "destroy",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 87,
+									"name": "destroy",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 88,
+											"name": "preserveDom",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											},
+											"defaultValue": "false"
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 16,
+									"character": 15
+								}
+							]
+						},
+						{
+							"id": 89,
+							"name": "placeAt",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 90,
+									"name": "placeAt",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"parameters": [
+										{
+											"id": 91,
+											"name": "node",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"__visited__": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "HTMLElement"
+											}
+										},
+										{
+											"id": 92,
+											"name": "reference",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true,
+												"__visited__": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 18,
+									"character": 15
+								}
+							]
+						},
+						{
+							"id": 93,
+							"name": "set",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 94,
+									"name": "set",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "unknown",
+										"name": "this"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 25,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 95,
+							"name": "startup",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPublic": true,
+								"__visited__": true
+							},
+							"signatures": [
+								{
+									"id": 96,
+									"name": "startup",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"__visited__": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "tests/unit/dijit/DijitWrapper.ts",
+									"line": 29,
+									"character": 15
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								82
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								81,
+								79,
+								80
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								86,
+								89,
+								93,
+								95
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "tests/unit/dijit/DijitWrapper.ts",
+							"line": 9,
+							"character": 15
+						}
+					],
+					"extendedBy": [
+						{
+							"type": "reference",
+							"name": "ContainerMockDijit",
+							"id": 97
+						}
+					]
+				},
+				{
+					"id": 119,
+					"name": "assert",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/dijit/DijitWrapper.ts",
+							"line": 2,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "AssertStatic"
+					}
+				},
+				{
+					"id": 118,
+					"name": "registerSuite",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/dijit/DijitWrapper.ts",
+							"line": 1,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "registerSuite"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						97,
+						78
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						119,
+						118
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "tests/unit/dijit/DijitWrapper.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 120,
+			"name": "\"tests/unit/dijit/all\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/unit/dijit/all.ts",
+			"sources": [
+				{
+					"fileName": "tests/unit/dijit/all.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 74,
+			"name": "\"tests/unit/main\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/unit/main.ts",
+			"children": [
+				{
+					"id": 76,
+					"name": "assert",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/main.ts",
+							"line": 2,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "AssertStatic"
+					}
+				},
+				{
+					"id": 75,
+					"name": "registerSuite",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/main.ts",
+							"line": 1,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "registerSuite"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						76,
+						75
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "tests/unit/main.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 121,
+			"name": "\"tests/unit/redux/ReduxInjector\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"__visited__": true
+			},
+			"originalName": "tests/unit/redux/ReduxInjector.ts",
+			"children": [
+				{
+					"id": 123,
+					"name": "assert",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/redux/ReduxInjector.ts",
+							"line": 2,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "AssertStatic"
+					}
+				},
+				{
+					"id": 122,
+					"name": "registerSuite",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"__visited__": true
+					},
+					"sources": [
+						{
+							"fileName": "tests/unit/redux/ReduxInjector.ts",
+							"line": 1,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "registerSuite"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						123,
+						122
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "tests/unit/redux/ReduxInjector.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "External modules",
+			"kind": 1,
+			"children": [
+				2,
+				1,
+				40,
+				52,
+				54,
+				124,
+				77,
+				120,
+				74,
+				121
+			]
+		}
+	]
+}

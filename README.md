@@ -148,3 +148,9 @@ or
 ## Licensing information
 
 © 2018 [JS Foundation](https://js.foundation/) & contributors. [New BSD](http://opensource.org/licenses/BSD-3-Clause) and [Apache 2.0](https://opensource.org/licenses/Apache-2.0) licenses.
+
+<!-- doc-viewer-config
+{
+	"api": "docs/api.json"
+}
+-->
