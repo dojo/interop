@@ -39,6 +39,7 @@
     "@types/glob": "5.0.*",
     "@types/grunt": "0.4.*",
     "@types/jsdom": "^11.0.2",
+    "@types/node": "~9.6.8",
     "@types/sinon": "^2.3.4",
     "codecov.io": "0.1.6",
     "grunt": "~1.0.1",
