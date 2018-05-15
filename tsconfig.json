@@ -1,3 +1,6 @@
 {
-	"extends": "./node_modules/@dojo/scripts/tsconfig/umd.json"
+	"extends": "./node_modules/@dojo/scripts/tsconfig/umd.json",
+	"compilerOptions": {
+		"types": [ "intern", "dojo" ]
+	}
 }
