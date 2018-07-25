@@ -1,5 +1,5 @@
-import { DNode, WidgetProperties, WNode } from '@dojo/widget-core/interfaces';
-import { WidgetBase } from '@dojo/widget-core/WidgetBase';
+import { DNode, WidgetProperties, WNode } from '@dojo/framework/widget-core/interfaces';
+import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 
 /**
  * A basic interface for Dojo 1 Dijit instances
@@ -55,7 +55,8 @@ export class DijitWrapper<D extends Dijit> extends WidgetBase<
 	WNode<DijitWrapper<Dijit>>
 > {
 	/**
-	 * A method that is decorated to be called after the render that will inject `onInstantiate` into children `DijitWrapper`s
+	 * A method that is decorated to be called after the render that will inject `onInstantiate` into
+	 * children `DijitWrapper`s
 	 * @param result The render result
 	 */
 	public decorateChildProperties(result: DNode | DNode[]): DNode | DNode[];

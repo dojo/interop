@@ -1,33 +1,3 @@
 {
-	"compilerOptions": {
-		"declaration": true,
-		"experimentalDecorators": true,
-		"module": "umd",
-		"moduleResolution": "node",
-		"noUnusedLocals": true,
-		"outDir": "_build/",
-		"removeComments": false,
-		"importHelpers": true,
-		"sourceMap": true,
-		"strict": true,
-		"target": "es5",
-		"lib": [
-			"dom",
-			"es5",
-			"es2015.iterable",
-			"es2015.promise",
-			"es2015.symbol",
-			"es2015.symbol.wellknown"
-		],
-		"types": [ "intern" ]
-	},
-	"include": [
-		"./src/**/*.ts",
-		"./tests/**/*.ts"
-	],
-	"exclude": [
-		"_build",
-		"dist",
-		"node_modules"
-	]
+	"extends": "./node_modules/@dojo/scripts/tsconfig/umd.json"
 }

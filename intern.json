@@ -1,79 +1,16 @@
 {
+	"extends": "./node_modules/@dojo/scripts/intern/base.json",
 	"capabilities+": {
-		"project": "Dojo 2",
 		"name": "@dojo/interop"
 	},
-	"environments": [
-		{ "browserName": "node" }
-	],
-	"suites": [
-		"./_build/tests/unit/all.js"
-	],
-	"functionalSuites": [
-		"./_build/tests/functional/all.js"
-	],
 	"browser": {
 		"loader": {
-			"script": "./node_modules/grunt-dojo2/lib/intern/internLoader.js",
+			"script": "./node_modules/@dojo/scripts/intern/loader.js",
 			"options": {
 				"packages": [
-					{ "name": "src", "location": "_build/src" },
-					{ "name": "tests", "location": "_build/tests" },
-					{ "name": "cldr-data", "location": "node_modules/cldr-data" },
-					{ "name": "cldrjs", "location": "node_modules/cldrjs" },
-					{ "name": "globalize", "location": "node_modules/globalize", "main": "dist/globalize" },
-					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" },
-					{ "name": "web-animations-js", "location": "node_modules/web-animations-js" },
-					{ "name": "css-select-umd", "location": "node_modules/css-select-umd", "main": "dist/index.js" },
-					{ "name": "diff", "location": "node_modules/diff", "main": "dist/diff.js" }
-				],
-				"map": {
-					"globalize": {
-						"cldr": "cldrjs/dist/cldr",
-						"cldr/event": "cldrjs/dist/cldr/event",
-						"cldr/supplemental": "cldrjs/dist/cldr/supplemental",
-						"cldr/unresolved": "cldrjs/dist/cldr/unresolved"
-					}
-				}
+					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" }
+				]
 			}
-		}
-	},
-	"coverage": [
-		"./_build/src/**/*.js"
-	],
-	"configs": {
-		"local": {
-			"tunnel": "selenium",
-			"environments+": [
-				{ "browserName": "chrome" }
-			]
-		},
-		"browserstack": {
-			"tunnel": "browserstack",
-			"capabilities+": {
-				"browserstack.debug": false
-			},
-			"environments+": [
-				{ "browserName": "edge" },
-				{ "browserName": "chrome", "platform": "WINDOWS" },
-				{ "browserName": "firefox", "os": "WINDOWS", "os_version": "10" },
-				{ "browserName": "safari", "version": "9.1", "platform": "MAC" },
-				{ "browserName": "iPhone", "version": "9.1" }
-			]
-		},
-		"saucelabs": {
-			"tunnel": "saucelabs",
-			"capabilities+": {
-				"fixSessionCapabilities": false
-			},
-
-			"defaultTimeout": 10000,
-			"environments+": [
-				{ "browserName": "internet explorer", "version": [ "11.0" ], "platform": "Windows 7" },
-				{ "browserName": "firefox", "version": "43", "platform": "Windows 10" },
-				{ "browserName": "chrome", "platform": "Windows 10" }
-			],
-			"maxConcurrency": 4
 		}
 	}
 }

@@ -1,7 +1,7 @@
 {
   "name": "@dojo/interop",
-  "version": "2.0.1-pre",
-  "description": "Provides bindings and interoperability between Dojo 2 and other libraries",
+  "version": "3.0.0-pre",
+  "description": "Provides bindings and interoperability between Dojo and other libraries",
   "engines": {
     "npm": ">=3.0.0"
   },
@@ -21,40 +21,48 @@
     "url": "https://github.com/dojo/interop.git"
   },
   "scripts": {
-    "prepublish": "grunt peerDepInstall",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:static:dev": "cpx \"{src,tests}/**/*.d.ts\" dist/dev",
+    "build:static:release": "cpx \"src/**/*.d.ts\" dist/release",
+    "build:umd": "tsc",
+    "build": "npm-run-all -p build:** -s dojo-package",
+    "clean": "rimraf dist coverage",
+    "dojo-package": "dojo-package",
+    "dojo-release": "dojo-release",
+    "intern": "intern",
+    "lint:tsc": "tslint -p .",
+    "lint:prettier": "prettier -l \"{src,tests}/**/*.{ts,tsx}\"",
+    "lint": "run-p lint:*",
     "precommit": "lint-staged",
-    "prettier": "prettier --write 'src/**/*.ts' 'tests/**/*.ts'",
-    "test": "grunt test"
+    "prettier": "prettier --write \"{src,tests}/**/*.ts\"",
+    "release": "run-s lint clean build \"dojo-release -- {@}\" --",
+    "test": "run-s lint clean build intern",
+    "test:local": "run-s lint clean build \"intern config=@local\"",
+    "test:browserstack": "run-s lint clean build \"intern config=@browserstack\"",
+    "uploadCoverage": "codecov --file=coverage/coverage.json",
+    "watch:ts": "dojo-tsc-watcher -p tsconfig.json -p tsconfig.esm.json -- dojo-package",
+    "watch": "run-p watch:ts \"build:static:** -- --watch\""
   },
   "peerDependencies": {
-    "@dojo/core": "^2.0.0",
-    "@dojo/has": "^2.0.0",
-    "@dojo/i18n": "^2.0.0",
-    "@dojo/shim": "^2.0.0",
-    "@dojo/widget-core": "^2.0.0"
+    "@dojo/framework": "~3.0.0"
   },
   "devDependencies": {
+    "@dojo/framework": "~3.0.0",
     "@dojo/loader": "^2.0.0",
-    "@dojo/test-extras": "^2.0.0",
-    "@types/glob": "5.0.*",
-    "@types/grunt": "0.4.*",
-    "@types/jsdom": "^11.0.2",
-    "@types/node": "~9.6.8",
-    "@types/sinon": "^2.3.4",
-    "codecov.io": "0.1.6",
-    "grunt": "~1.0.1",
-    "grunt-dojo2": "~0.1.3",
-    "grunt-tslint": "5.0.1",
+    "@dojo/scripts": "~3.0.1",
+    "@types/node": "~9.6.5",
+    "@types/sinon": "~4.1.2",
+    "codecov": "~3.0.4",
+    "cpx": "~1.5.0",
     "husky": "0.14.3",
-    "intern": "~4.1.0",
     "lint-staged": "6.0.0",
+    "npm-run-all": "~4.1.3",
     "prettier": "1.9.2",
-    "sinon": "^2.3.0",
-    "tslint": "5.2.0",
-    "typescript": "~2.6.1"
+    "rimraf": "~2.6.2",
+    "sinon": "~4.1.3"
   },
   "dependencies": {
-    "tslib": "~1.8.1"
+    "tslib": "1.8.1"
   },
   "optionalDependencies": {
     "redux": "^3.7.2"
