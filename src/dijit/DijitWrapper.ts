@@ -1,9 +1,9 @@
-import { assign } from '@dojo/shim/object';
-import { isWNode, v } from '@dojo/widget-core/d';
-import { Constructor, DNode, VNode, WNode } from '@dojo/widget-core/interfaces';
-import { WidgetBase } from '@dojo/widget-core/WidgetBase';
-import afterRender from '@dojo/widget-core/decorators/afterRender';
-import Base from '@dojo/widget-core/meta/Base';
+import { assign } from '@dojo/framework/shim/object';
+import { isWNode, v } from '@dojo/framework/widget-core/d';
+import { Constructor, DNode, VNode, WNode } from '@dojo/framework/widget-core/interfaces';
+import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
+import afterRender from '@dojo/framework/widget-core/decorators/afterRender';
+import Base from '@dojo/framework/widget-core/meta/Base';
 import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitWrapperClass } from './interfaces';
 
 /**

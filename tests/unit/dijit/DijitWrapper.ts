@@ -1,10 +1,10 @@
 const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');
-import harness from '@dojo/test-extras/harness';
+import harness from '@dojo/framework/testing/harness';
 import { stub } from 'sinon';
 import DijitWrapper from '../../../src/dijit/DijitWrapper';
 
-import { v, w } from '@dojo/widget-core/d';
+import { v, w } from '@dojo/framework/widget-core/d';
 
 class MockDijit {
 	public id: string | undefined;
