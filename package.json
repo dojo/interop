@@ -24,6 +24,8 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:static:dev": "cpx \"{src,tests}/**/*.d.ts\" dist/dev",
     "build:static:release": "cpx \"src/**/*.d.ts\" dist/release",
+    "build:loaderConfig:dev": "cpx \"src/**/loaderConfig.js\" dist/dev",
+    "build:loaderConfig:release": "cpx \"src/**/loaderConfig.js\" dist/release",
     "build:umd": "tsc",
     "build": "npm-run-all -p build:** -s dojo-package",
     "clean": "rimraf dist coverage",
