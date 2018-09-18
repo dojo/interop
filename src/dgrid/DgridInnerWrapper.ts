@@ -131,15 +131,23 @@ export class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 	private filterProperties(properties: DgridWrapperProperties): DgridProperties {
 		// Remove DgridWrapperProperties properties not used by dgrid.
 		const newProperties = { ...properties } as any;
+		const columnSet = newProperties.features && newProperties.features.columnSet;
 		delete newProperties.features;
 		if (newProperties.data != null) {
 			newProperties.collection = buildCollection(newProperties, this.properties.features);
 		}
-		if (newProperties.columns != null) {
-			newProperties.columns = duplicateColumnDef(newProperties.columns);
-		}
-		if (newProperties.columnSets != null) {
-			newProperties.columnSets = duplicateColumnSets(newProperties.columnSets);
+		if (columnSet) {
+			if (newProperties.columnSets != null) {
+				newProperties.columnSets = duplicateColumnSets(newProperties.columnSets);
+			} else {
+				newProperties.columnSets = [];
+			}
+			delete newProperties.columns;
+		} else {
+			if (newProperties.columns != null) {
+				newProperties.columns = duplicateColumnDef(newProperties.columns);
+			}
+			delete newProperties.columnSets;
 		}
 		if ('selection' in newProperties && newProperties.selection == null) {
 			newProperties.selection = {};

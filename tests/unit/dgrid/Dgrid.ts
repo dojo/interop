@@ -768,11 +768,21 @@ registerSuite('dgrid/Dgrid DOM', {
 			document.body.removeChild(sandbox);
 		},
 		tests: {
-			'basic column resizer render'() {
+			'basic column set render'() {
 				return new Promise((resolve) => {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
+					projector.append(sandbox);
+				});
+			},
+
+			'no column sets'() {
+				return new Promise((resolve) => {
+					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
+						resolve();
+					});
+					projector.testProperties.columnSets = undefined;
 					projector.append(sandbox);
 				});
 			}
