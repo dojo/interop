@@ -304,42 +304,47 @@ function buildSelectEvent(event: DgridSelectionEvent): SelectionData {
 	return data;
 }
 
-function buildColumnStateChange(event: DgridColumnHiderEvent): ColumnStateChangeData {
+function buildColumnStateChange({ column: { field, id }, hidden }: DgridColumnHiderEvent): ColumnStateChangeData {
 	return {
-		field: event.column.field,
-		id: event.column.id,
-		hidden: event.hidden
+		field,
+		id,
+		hidden
 	};
 }
 
-function buildColumnReorder(event: DgridColumnReorderEvent): ColumnReorderData {
+function buildColumnReorder({ column: { field, id }, subRow }: DgridColumnReorderEvent): ColumnReorderData {
 	return {
-		field: event.column.field,
-		id: event.column.id,
-		subRow: event.subRow
+		field,
+		id,
+		subRow
 	};
 }
 
-function buildColumnResize(event: DgridColumnResizeEvent): ColumnResizeData {
-	const column = event.grid.columns[event.columnId];
+function buildColumnResize({
+	grid: { columns },
+	width,
+	parentType,
+	columnId
+}: DgridColumnResizeEvent): ColumnResizeData {
+	const { field, id } = columns[columnId];
 	return {
-		field: column.field,
-		id: column.id,
-		width: event.width,
-		parentType: event.parentType
+		field,
+		id,
+		width,
+		parentType
 	};
 }
 
-function buildSort(event: DgridSortEvent): SortData {
+function buildSort({ parentType, sort }: DgridSortEvent): SortData {
 	return {
-		parentType: event.parentType,
-		sort: event.sort
+		parentType,
+		sort
 	};
 }
 
-function buildError(event: DgridErrorEvent): ErrorData {
+function buildError({ error }: DgridErrorEvent): ErrorData {
 	return {
-		error: event.error
+		error
 	};
 }
 
@@ -384,18 +389,8 @@ function buildConstructor(properties: DgridInnerWrapperProperties, emitGridState
 		columnResizer = false,
 		compoundColumns = false,
 		columnSet = false
-	} = properties.features || {
-		pagination: false,
-		keyboard: false,
-		selection: undefined,
-		selector: false,
-		tree: false,
-		columnHider: false,
-		columnReorder: false,
-		columnResizer: false,
-		compoundColumns: false,
-		columnSet: false
-	};
+	} =
+		properties.features || {};
 
 	let mixins: any = [];
 	let overrides: any = {};
