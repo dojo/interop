@@ -348,11 +348,11 @@ function buildError({ error }: DgridErrorEvent): ErrorData {
 	};
 }
 
-function buildCellFocus(event: DgridCellFocusEvent): CellFocusData {
+function buildCellFocus({ row, cell, parentType }: DgridCellFocusEvent): CellFocusData {
 	return {
-		row: event.row,
-		cell: event.cell,
-		parentType: event.parentType
+		row,
+		cell,
+		parentType
 	};
 }
 
