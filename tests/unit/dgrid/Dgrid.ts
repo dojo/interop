@@ -1,12 +1,11 @@
 import TestProjector from './TestProjector';
 import harness from '@dojo/framework/testing/harness';
-import DgridWrapper from '../../../src/dgrid/DgridWrapper';
-import DgridWrapperProperties, {
+import DgridWrapper, {
+	DgridWrapperProperties,
 	SelectionData,
 	SelectionMode,
 	SelectionType
-} from '../../../src/dgrid/DgridWrapperProperties';
-import { DgridInnerWrapperProperties } from '../../../src/dgrid/DgridInnerWrapperProperties';
+} from '../../../src/dgrid/DgridWrapper';
 
 import { w } from '@dojo/framework/widget-core/d';
 
@@ -42,7 +41,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 	},
 
@@ -71,7 +70,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 		properties.columns = {
 			id: 'ID',
@@ -92,7 +91,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 		properties.data = [
 			{
@@ -121,7 +120,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 		properties.columns = [{ field: 'first', label: 'FIRST' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
@@ -140,7 +139,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 		properties.columns = [{ field: 'first', label: 'fIrSt' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
@@ -159,7 +158,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 	},
 
@@ -206,7 +205,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: false
 				}
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 		properties.previousNextArrows = false;
 		h.expect(() =>
@@ -223,7 +222,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 					pagination: false
 				},
 				previousNextArrows: false
-			} as DgridInnerWrapperProperties)
+			} as any)
 		);
 	}
 });

@@ -1,8 +1,7 @@
 import { ProjectorMixin } from '@dojo/framework/widget-core/mixins/Projector';
 import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
-import DgridWrapperProperties from '../../../src/dgrid/DgridWrapperProperties';
 import { w } from '@dojo/framework/widget-core/d';
-import DgridWrapper from '../../../src/dgrid/DgridWrapper';
+import DgridWrapper, { DgridWrapperProperties } from '../../../src/dgrid/DgridWrapper';
 import { DNode } from '@dojo/framework/widget-core/interfaces';
 
 export class TestProjector extends ProjectorMixin(WidgetBase) {
