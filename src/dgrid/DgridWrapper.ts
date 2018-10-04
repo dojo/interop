@@ -486,7 +486,7 @@ function buildCollection(properties: DgridProperties, data?: {}[], features?: Dg
 class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 	private _grid: DgridGrid;
 
-	protected render(): DNode | DNode[] {
+	protected render(): DNode {
 		let grid = this._grid;
 		if (!grid) {
 			grid = this._grid = this.initGrid();
