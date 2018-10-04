@@ -180,11 +180,23 @@ class SampleGrid extends WidgetBase {
 }
 ```
 `DgridWrapper` accepts the items to be rendered as an array of objects set in the `data` property. Refer to 
-[DgridWrapperProperties](src/dgrid/DgridWrapperProperties.ts) to see the other properties that `DgridWrapper` 
+[DgridWrapperProperties](src/dgrid/DgridWrapper.ts) to see the other properties that `DgridWrapper` 
 supports.  Use the `features` property to activate different dgrid mixins.  The properties in 
 `DgridWrapperProperties` are passed to the dgrid widgets and mixins and the property names match the dgrid property 
 names.  Refer to the [dgrid documentation]
 (https://github.com/SitePen/dgrid/tree/master/doc) for information on each dgrid configuration property. 
+
+The `DgridWrapper` supports a subset of all dgrid features. Currently the features supported include:
+* [Pagination](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/extensions/Pagination.md)
+* [Keyboard](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/mixins/Keyboard.md)
+* [Selection](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/mixins/Selection.md)
+* [Selector](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/mixins/Selector.md)
+* [Tree](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/mixins/Tree.md)
+* [ColumnHider](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/extensions/ColumnHider.md)
+* [ColumnReorder](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/extensions/ColumnReorder.md)
+* [ColumnResizer](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/extensions/ColumnResizer.md)
+* [CompoundColumns](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/extensions/CompoundColumns.md)
+* [ColumnSets](https://github.com/SitePen/dgrid/blob/v1.2.1/doc/components/mixins/ColumnSet.md)
 
 ## How do I contribute?
 
