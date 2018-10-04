@@ -234,7 +234,15 @@ interface DgridState {
 
 interface DgridGrid extends Grid, Pagination, Keyboard, Selection {}
 
-interface DgridProperties extends Grid.KwArgs, StoreMixin.KwArgs, Pagination.KwArgs, OnDemandGrid.KwArgs {}
+interface DgridProperties
+	extends Grid.KwArgs,
+		StoreMixin.KwArgs,
+		Pagination.KwArgs,
+		OnDemandGrid.KwArgs,
+		Selection.KwArgs,
+		ColumnSet.KwArgs {
+	selection?: Selections;
+}
 
 interface DgridSelectionEvent extends Event {
 	rows?: { data: any }[];
@@ -392,7 +400,7 @@ function buildConstructor(properties: DgridInnerWrapperProperties, emitGridState
 	} =
 		properties.features || {};
 
-	let mixins: any = [];
+	let mixins: any[] = [];
 	let overrides: any = {};
 	if (pagination) {
 		mixins.push(Grid);
@@ -444,9 +452,9 @@ function buildConstructor(properties: DgridInnerWrapperProperties, emitGridState
 	return declare(mixins as any, overrides);
 }
 
-function buildCollection(properties: any, features?: DgridWrapperFeatures): any {
+function buildCollection(properties: DgridProperties, data?: {}[], features?: DgridWrapperFeatures): any {
 	const treeEnabled = features && features.tree;
-	let mixins: any = [MemoryStore, Trackable];
+	let mixins: any[] = [MemoryStore, Trackable];
 	let overrides: any = {};
 
 	if (treeEnabled) {
@@ -460,7 +468,7 @@ function buildCollection(properties: any, features?: DgridWrapperFeatures): any 
 
 	const Store = declare(mixins as any, overrides);
 	let collection = new Store({
-		data: properties.data
+		data
 	});
 	if (treeEnabled) {
 		collection = collection.getRootCollection();
@@ -525,11 +533,11 @@ class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 
 	private filterProperties(properties: DgridWrapperProperties): DgridProperties {
 		// Remove DgridWrapperProperties properties not used by dgrid.
-		const newProperties = { ...properties } as any;
-		const columnSet = newProperties.features && newProperties.features.columnSet;
-		delete newProperties.features;
-		if (newProperties.data != null) {
-			newProperties.collection = buildCollection(newProperties, this.properties.features);
+		const { features, data, ...otherProperties } = properties;
+		const newProperties: DgridProperties = otherProperties;
+		const columnSet = features && features.columnSet;
+		if (data != null) {
+			newProperties.collection = buildCollection(newProperties, data, this.properties.features);
 		}
 		if (columnSet) {
 			if (newProperties.columnSets != null) {
@@ -544,7 +552,7 @@ class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 			}
 			delete newProperties.columnSets;
 		}
-		if ('selection' in newProperties && newProperties.selection == null) {
+		if (newProperties.selection == null && 'selection' in newProperties) {
 			newProperties.selection = {};
 		}
 		return newProperties;
@@ -628,7 +636,7 @@ export class DgridWrapper extends WidgetBase<DgridWrapperProperties> {
 	private key = 0;
 	private _gridState: DgridState;
 
-	protected render(): DNode | DNode[] {
+	protected render(): DNode {
 		const changedPropertyKeys = this.changedPropertyKeys;
 		// Some properties require the dgrid grid to be destroyed and recreated because a different
 		// combination of mixins is required.  Some properties when changed can be handled by an existing

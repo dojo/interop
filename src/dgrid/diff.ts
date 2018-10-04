@@ -9,8 +9,8 @@ export function columnsDiff(prevColumnSpec: ColumnSpec, newColumnSpec: ColumnSpe
 
 	if (prevIsArray === newIsArrary) {
 		if (prevIsArray) {
-			const prevColumnArray = <Column[]>prevColumnSpec;
-			const newColumnArray = <Column[]>newColumnSpec;
+			const prevColumnArray = prevColumnSpec as Column[];
+			const newColumnArray = newColumnSpec as Column[];
 			if (prevColumnArray.length === newColumnArray.length) {
 				changed = prevColumnArray.some((previousColumnDef, i) => {
 					return auto(previousColumnDef, newColumnArray[i]).changed;
