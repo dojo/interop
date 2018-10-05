@@ -1,4 +1,4 @@
-import TestProjector from './TestProjector';
+import renderer from '@dojo/framework/widget-core/vdom';
 import harness from '@dojo/framework/testing/harness';
 import DgridWrapper, {
 	DgridInnerWrapper,
@@ -13,7 +13,40 @@ import { w } from '@dojo/framework/widget-core/d';
 const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');
 
-let projector: TestProjector;
+let renderProperties: DgridWrapperProperties;
+function testProperties(): DgridWrapperProperties {
+	return {
+		data: [
+			{
+				id: 1,
+				first: 'first 1',
+				last: 'last 1'
+			},
+			{
+				id: 2,
+				first: 'first 2',
+				last: 'last 2'
+			}
+		],
+		columns: {
+			first: 'First',
+			last: 'Last'
+		},
+		features: {}
+	};
+}
+
+function render(mountPoint?: Node) {
+	const r = renderer(() => {
+		console.log(`Rendering: Properties: ${JSON.stringify(renderProperties)}`);
+		return w(DgridWrapper, { ...renderProperties });
+	});
+	r.mount({
+		sync: true,
+		domNode: mountPoint as HTMLElement
+	});
+	return r;
+}
 
 registerSuite('dgrid/Dgrid VDOM', {
 	'basic vdom render'() {
@@ -47,7 +80,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 	},
 
 	'property update - no key change expected'() {
-		const properties: DgridWrapperProperties = {
+		renderProperties = {
 			data: [],
 			columns: {
 				first: 'First',
@@ -57,7 +90,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				pagination: true
 			}
 		};
-		const h = harness(() => w(DgridWrapper, properties));
+		const h = harness(() => w(DgridWrapper, renderProperties));
 		h.expect(() =>
 			w(DgridInnerWrapper, {
 				data: [],
@@ -73,7 +106,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.columns = {
+		renderProperties.columns = {
 			id: 'ID',
 			first: 'First',
 			last: 'Last'
@@ -94,7 +127,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.data = [
+		renderProperties.data = [
 			{
 				id: 1,
 				first: 'first',
@@ -123,7 +156,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.columns = [{ field: 'first', label: 'FIRST' }, { field: 'last', label: 'LAST' }];
+		renderProperties.columns = [{ field: 'first', label: 'FIRST' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
 			w(DgridInnerWrapper, {
 				data: [
@@ -142,7 +175,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.columns = [{ field: 'first', label: 'fIrSt' }, { field: 'last', label: 'LAST' }];
+		renderProperties.columns = [{ field: 'first', label: 'fIrSt' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
 			w(DgridInnerWrapper, {
 				data: [
@@ -164,7 +197,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 	},
 
 	'property update - key change expected'() {
-		const properties: DgridWrapperProperties = {
+		renderProperties = {
 			data: [],
 			columns: {
 				first: 'First',
@@ -174,7 +207,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				pagination: true
 			}
 		};
-		const h = harness(() => w(DgridWrapper, properties));
+		const h = harness(() => w(DgridWrapper, renderProperties));
 		h.expect(() =>
 			w(DgridInnerWrapper, {
 				data: [],
@@ -190,7 +223,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.features = {
+		renderProperties.features = {
 			pagination: false
 		};
 		h.expect(() =>
@@ -208,7 +241,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 				}
 			} as any)
 		);
-		properties.previousNextArrows = false;
+		renderProperties.previousNextArrows = false;
 		h.expect(() =>
 			w(DgridInnerWrapper, {
 				data: [],
@@ -232,12 +265,14 @@ let sandbox: HTMLElement;
 
 registerSuite('dgrid/Dgrid DOM', {
 	'basic DOM render'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.pagination = true;
-		projector.sandbox();
+		renderProperties = testProperties();
+		const root = document.createDocumentFragment();
+
+		renderProperties.features!.pagination = true;
+		render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		const gridNode = projector.root.firstChild! as HTMLElement;
+		const gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 
 		const cells = gridNode.querySelectorAll('.dgrid-cell');
@@ -252,13 +287,15 @@ registerSuite('dgrid/Dgrid DOM', {
 	},
 
 	'basic DOM render - no columns'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.pagination = true;
-		projector.testProperties.columns = [];
-		projector.sandbox();
+		renderProperties = testProperties();
+		const root = document.createDocumentFragment();
+
+		renderProperties.features!.pagination = true;
+		renderProperties.columns = [];
+		render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		const gridNode = projector.root.firstChild! as HTMLElement;
+		const gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 
 		const cells = gridNode.querySelectorAll('.dgrid-cell');
@@ -269,13 +306,15 @@ registerSuite('dgrid/Dgrid DOM', {
 	},
 
 	'basic DOM render - null columns'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.pagination = true;
-		projector.testProperties.columns = undefined;
-		projector.sandbox();
+		renderProperties = testProperties();
+		const root = document.createDocumentFragment();
+
+		renderProperties.features!.pagination = true;
+		renderProperties.columns = undefined;
+		render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		const gridNode = projector.root.firstChild! as HTMLElement;
+		const gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 
 		const cells = gridNode.querySelectorAll('.dgrid-cell');
@@ -286,22 +325,25 @@ registerSuite('dgrid/Dgrid DOM', {
 	},
 
 	'recreate grid on property change'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.pagination = true;
-		projector.sandbox();
+		renderProperties = testProperties();
+		let root = document.createDocumentFragment();
+
+		renderProperties.features!.pagination = true;
+		render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		let gridNode = projector.root.firstChild! as HTMLElement;
+		let gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 		const gridId = gridNode.id;
 
 		let paginationNode = gridNode.querySelector('.dgrid-pagination');
 		assert.exists(paginationNode);
 
-		delete projector.testProperties.features;
-		projector.invalidate();
+		delete renderProperties.features;
+		root = document.createDocumentFragment();
+		render(root);
 
-		gridNode = projector.root.firstChild! as HTMLElement;
+		gridNode = root.firstChild! as HTMLElement;
 		assert.notStrictEqual(gridNode.id, gridId);
 		const cells = gridNode.querySelectorAll('.dgrid-cell');
 		assert.strictEqual(cells.length, 6);
@@ -315,13 +357,17 @@ registerSuite('dgrid/Dgrid DOM', {
 	},
 
 	'update grid on property change'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.pagination = true;
-		projector.testProperties.columns = [{ field: 'first', label: 'First' }, { field: 'last', label: 'Last' }];
-		projector.sandbox();
+		console.log('Update grid');
+		renderProperties = testProperties();
+		let root = document.createDocumentFragment();
+
+		renderProperties.features!.pagination = true;
+		renderProperties.columns = [{ field: 'first', label: 'First' }, { field: 'last', label: 'Last' }];
+		console.log('First render');
+		const rendered = render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		let gridNode = projector.root.firstChild! as HTMLElement;
+		let gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 		const gridId = gridNode.id;
 
@@ -332,14 +378,18 @@ registerSuite('dgrid/Dgrid DOM', {
 			assert.strictEqual(cells[i].textContent, text);
 		});
 
-		projector.testProperties.columns = [
+		renderProperties.columns = [
 			{ field: 'id', label: 'ID' },
 			{ field: 'first', label: 'First' },
 			{ field: 'last', label: 'Last' }
 		];
-		projector.invalidate();
+		console.log('Invalidated');
+		rendered.mount({
+			sync: true,
+			domNode: root as any
+		});
 
-		gridNode = projector.root.firstChild! as HTMLElement;
+		gridNode = root.firstChild! as HTMLElement;
 		assert.strictEqual(gridNode.id, gridId);
 		cells = gridNode.querySelectorAll('.dgrid-cell');
 		assert.strictEqual(cells.length, 9);
@@ -374,8 +424,8 @@ registerSuite('dgrid/Dgrid DOM', {
 									// Are we on page 2?
 									assert.strictEqual(statusNode.textContent, '1 - 5 of 99 results');
 
-									projector.testProperties.previousNextArrows = false;
-									projector.invalidate();
+									renderProperties.previousNextArrows = false;
+									rendered.invalidate();
 								}, 100);
 								break;
 							}
@@ -391,18 +441,18 @@ registerSuite('dgrid/Dgrid DOM', {
 							}
 						}
 					});
-					const projector = new TestProjector();
-					projector.testProperties.features!.pagination = true;
+					renderProperties = testProperties();
+					renderProperties.features!.pagination = true;
 
 					for (let i = 3; i < 100; i++) {
-						projector.testProperties.data.push({
+						renderProperties.data.push({
 							id: i,
 							first: 'First' + i,
 							last: 'Last' + i
 						});
 					}
-					projector.testProperties.rowsPerPage = 5;
-					projector.append(sandbox);
+					renderProperties.rowsPerPage = 5;
+					const rendered = render(sandbox);
 				});
 			},
 
@@ -424,8 +474,8 @@ registerSuite('dgrid/Dgrid DOM', {
 										// Are we on page 2?
 										assert.strictEqual(statusNode.textContent, '6 - 10 of 99 results');
 
-										projector.testProperties.previousNextArrows = false;
-										projector.invalidate();
+										renderProperties.previousNextArrows = false;
+										rendered.invalidate();
 									}, 100);
 								} else {
 									assert.fail('Could not advance grid page.');
@@ -445,30 +495,32 @@ registerSuite('dgrid/Dgrid DOM', {
 						}
 					});
 
-					const projector = new TestProjector();
-					projector.testProperties.features!.pagination = true;
+					renderProperties = testProperties();
+					renderProperties.features!.pagination = true;
 					for (let i = 3; i < 100; i++) {
-						projector.testProperties.data.push({
+						renderProperties.data.push({
 							id: i,
 							first: 'First' + i,
 							last: 'Last' + i
 						});
 					}
-					projector.testProperties.rowsPerPage = 5;
-					projector.append(sandbox);
+					renderProperties.rowsPerPage = 5;
+					const rendered = render(sandbox);
 				});
 			}
 		}
 	},
 
 	'keyboard tab index'() {
-		const projector = new TestProjector();
-		projector.testProperties.features!.keyboard = true;
-		projector.testProperties.tabIndex = 5;
-		projector.sandbox();
+		renderProperties = testProperties();
+		const root = document.createDocumentFragment();
+
+		renderProperties.features!.keyboard = true;
+		renderProperties.tabIndex = 5;
+		render(root);
 
 		// Check to see if a dgrid grid rendered with pagination.
-		const gridNode = projector.root.firstChild! as HTMLElement;
+		const gridNode = root.firstChild! as HTMLElement;
 		assert.exists(gridNode);
 
 		const cells = gridNode.querySelectorAll('th.dgrid-cell');
@@ -481,8 +533,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.selection = SelectionType.row;
+			renderProperties = testProperties();
+			renderProperties.features!.selection = SelectionType.row;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -495,8 +547,8 @@ registerSuite('dgrid/Dgrid DOM', {
 						(event as any).grid.deselect(1);
 						resolve();
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.append(sandbox);
+					renderProperties.selectionMode = SelectionMode.multiple;
+					render(sandbox);
 				});
 			},
 			'basic selection render with null selection'() {
@@ -505,9 +557,9 @@ registerSuite('dgrid/Dgrid DOM', {
 						assert.strictEqual(Object.keys((event as any).grid.selection).length, 0);
 						resolve();
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.testProperties.selection = undefined;
-					projector.append(sandbox);
+					renderProperties.selectionMode = SelectionMode.multiple;
+					renderProperties.selection = undefined;
+					render(sandbox);
 				});
 			},
 			'selection events'() {
@@ -517,15 +569,15 @@ registerSuite('dgrid/Dgrid DOM', {
 						(event as any).grid.select(1);
 						(event as any).grid.deselect(1);
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.testProperties.onSelect = (selectedData: SelectionData) => {
+					renderProperties.selectionMode = SelectionMode.multiple;
+					renderProperties.onSelect = (selectedData: SelectionData) => {
 						selected = true;
 						assert.strictEqual(selectedData.type, SelectionType.row);
 						assert.strictEqual(1, selectedData.data.length);
 						assert.strictEqual(1, selectedData.data[0].item.id);
 						assert.strictEqual('first 1', selectedData.data[0].item.first);
 					};
-					projector.testProperties.onDeselect = (selectedData: SelectionData) => {
+					renderProperties.onDeselect = (selectedData: SelectionData) => {
 						assert.isTrue(selected);
 						assert.strictEqual(selectedData.type, SelectionType.row);
 						assert.strictEqual(1, selectedData.data.length);
@@ -533,7 +585,7 @@ registerSuite('dgrid/Dgrid DOM', {
 						assert.strictEqual('first 1', selectedData.data[0].item.first);
 						resolve();
 					};
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			},
 			'selection events with selector'() {
@@ -543,21 +595,21 @@ registerSuite('dgrid/Dgrid DOM', {
 						(event as any).grid.select(1);
 						(event as any).grid.deselect(1);
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.testProperties.features!.selector = true;
-					(projector.testProperties.columns as any).selector = { selector: 'checkbox' };
-					projector.testProperties.onSelect = (selectedData: SelectionData) => {
+					renderProperties.selectionMode = SelectionMode.multiple;
+					renderProperties.features!.selector = true;
+					(renderProperties.columns as any).selector = { selector: 'checkbox' };
+					renderProperties.onSelect = (selectedData: SelectionData) => {
 						selected = true;
 						const inputs = document.querySelectorAll('td.dgrid-selector input');
 						assert.isTrue((inputs[0] as HTMLInputElement).checked);
 					};
-					projector.testProperties.onDeselect = (selectedData: SelectionData) => {
+					renderProperties.onDeselect = (selectedData: SelectionData) => {
 						assert.isTrue(selected);
 						const inputs = document.querySelectorAll('td.dgrid-selector input');
 						assert.isFalse((inputs[0] as HTMLInputElement).checked);
 						resolve();
 					};
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -568,8 +620,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.selection = SelectionType.cell;
+			renderProperties = testProperties();
+			renderProperties.features!.selection = SelectionType.cell;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -584,8 +636,8 @@ registerSuite('dgrid/Dgrid DOM', {
 						(event as any).grid.deselect(firstCell);
 						resolve();
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.append(sandbox);
+					renderProperties.selectionMode = SelectionMode.multiple;
+					render(sandbox);
 				});
 			},
 			'selection events'() {
@@ -597,8 +649,8 @@ registerSuite('dgrid/Dgrid DOM', {
 						(event as any).grid.select(firstCell);
 						(event as any).grid.deselect(firstCell);
 					});
-					projector.testProperties.selectionMode = SelectionMode.multiple;
-					projector.testProperties.onSelect = (selectedData: SelectionData) => {
+					renderProperties.selectionMode = SelectionMode.multiple;
+					renderProperties.onSelect = (selectedData: SelectionData) => {
 						selected = true;
 						assert.strictEqual(selectedData.type, SelectionType.cell);
 						assert.strictEqual(1, selectedData.data.length);
@@ -606,7 +658,7 @@ registerSuite('dgrid/Dgrid DOM', {
 						assert.strictEqual('first 1', selectedData.data[0].item.first);
 						assert.strictEqual('first', selectedData.data[0].field);
 					};
-					projector.testProperties.onDeselect = (selectedData: SelectionData) => {
+					renderProperties.onDeselect = (selectedData: SelectionData) => {
 						assert.isTrue(selected);
 						assert.strictEqual(selectedData.type, SelectionType.cell);
 						assert.strictEqual(1, selectedData.data.length);
@@ -615,7 +667,7 @@ registerSuite('dgrid/Dgrid DOM', {
 						assert.strictEqual('first', selectedData.data[0].field);
 						resolve();
 					};
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -626,8 +678,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.tree = true;
+			renderProperties = testProperties();
+			renderProperties.features!.tree = true;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -638,7 +690,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -649,8 +701,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.columnHider = true;
+			renderProperties = testProperties();
+			renderProperties.features!.columnHider = true;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -661,7 +713,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			},
 			'column hider events'() {
@@ -673,7 +725,7 @@ registerSuite('dgrid/Dgrid DOM', {
 						grid.toggleColumnHiddenState('first');
 					});
 					let eventCount = 0;
-					projector.testProperties.onColumnStateChange = (data) => {
+					renderProperties.onColumnStateChange = (data) => {
 						eventCount++;
 						switch (eventCount) {
 							case 1: {
@@ -691,7 +743,7 @@ registerSuite('dgrid/Dgrid DOM', {
 							}
 						}
 					};
-					projector.testProperties.onDeselect = (selectedData: SelectionData) => {
+					renderProperties.onDeselect = (selectedData: SelectionData) => {
 						assert.isTrue(selected);
 						assert.strictEqual(selectedData.type, SelectionType.cell);
 						assert.strictEqual(1, selectedData.data.length);
@@ -700,7 +752,7 @@ registerSuite('dgrid/Dgrid DOM', {
 						assert.strictEqual('first', selectedData.data[0].field);
 						resolve();
 					};
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -711,8 +763,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.columnReorder = true;
+			renderProperties = testProperties();
+			renderProperties.features!.columnReorder = true;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -723,7 +775,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -734,8 +786,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.columnResizer = true;
+			renderProperties = testProperties();
+			renderProperties.features!.columnResizer = true;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -746,7 +798,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}
@@ -757,9 +809,9 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.columnSet = true;
-			projector.testProperties.columnSets = [
+			renderProperties = testProperties();
+			renderProperties.features!.columnSet = true;
+			renderProperties.columnSets = [
 				[[{ label: 'First', field: 'first' }]],
 				[[{ label: 'Last', field: 'last' }]]
 			];
@@ -773,7 +825,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			},
 
@@ -782,8 +834,8 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.testProperties.columnSets = undefined;
-					projector.append(sandbox);
+					renderProperties.columnSets = undefined;
+					render(sandbox);
 				});
 			}
 		}
@@ -794,8 +846,8 @@ registerSuite('dgrid/Dgrid DOM', {
 			sandbox = document.createElement('div');
 			document.body.appendChild(sandbox);
 
-			projector = new TestProjector();
-			projector.testProperties.features!.compoundColumns = true;
+			renderProperties = testProperties();
+			renderProperties.features!.compoundColumns = true;
 		},
 		afterEach() {
 			document.body.removeChild(sandbox);
@@ -806,7 +858,7 @@ registerSuite('dgrid/Dgrid DOM', {
 					sandbox.addEventListener('dgrid-refresh-complete', (event) => {
 						resolve();
 					});
-					projector.append(sandbox);
+					render(sandbox);
 				});
 			}
 		}

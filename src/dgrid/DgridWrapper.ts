@@ -1,5 +1,5 @@
 import { dom } from '@dojo/framework/widget-core/d';
-import { duplicate } from '@dojo/framework/core/lang';
+import { deepMixin } from '@dojo/framework/core/util';
 import * as Grid from 'dgrid/Grid';
 import * as declare from 'dojo/_base/declare';
 import * as CellSelection from 'dgrid/CellSelection';
@@ -284,6 +284,12 @@ interface DgridCellFocusEvent extends Event {
 	row?: {};
 	cell?: {};
 	parentType?: string;
+}
+
+function duplicate<T extends {}>(source: T): T {
+	const target = Object.create(Object.getPrototypeOf(source));
+
+	return deepMixin(target, source);
 }
 
 function buildSelectEvent(event: DgridSelectionEvent): SelectionData {
