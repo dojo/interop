@@ -24,6 +24,8 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:static:dev": "cpx \"{src,tests}/**/*.d.ts\" dist/dev",
     "build:static:release": "cpx \"src/**/*.d.ts\" dist/release",
+    "build:loaderConfig:dev": "cpx \"src/**/loaderConfig.js\" dist/dev",
+    "build:loaderConfig:release": "cpx \"src/**/loaderConfig.js\" dist/release",
     "build:umd": "tsc",
     "build": "npm-run-all -p build:** -s dojo-package",
     "clean": "rimraf dist coverage",
@@ -50,6 +52,7 @@
     "@dojo/framework": "~3.0.0",
     "@dojo/loader": "^2.0.0",
     "@dojo/scripts": "~3.0.1",
+    "@types/dojo": "^1.9.40",
     "@types/node": "~9.6.5",
     "@types/sinon": "~4.1.2",
     "codecov": "~3.0.4",
@@ -62,6 +65,9 @@
     "sinon": "~4.1.3"
   },
   "dependencies": {
+    "dgrid": "1.2.1",
+    "dojo": "1.13.0",
+    "dojo-dstore": "1.1.2",
     "tslib": "1.8.1"
   },
   "optionalDependencies": {

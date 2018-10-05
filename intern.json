@@ -4,11 +4,17 @@
 		"name": "@dojo/interop"
 	},
 	"browser": {
+		"suites+": [
+			"./dist/dev/tests/unit/dgrid/all.js"
+		],
 		"loader": {
 			"script": "./node_modules/@dojo/scripts/intern/loader.js",
 			"options": {
 				"packages": [
-					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" }
+					{ "name": "redux", "location": "node_modules/redux/dist", "main": "redux" },
+					{ "name": "dojo", "location": "node_modules/dojo" },
+					{ "name": "dgrid", "location": "node_modules/dgrid" },
+					{ "name": "dstore", "location": "node_modules/dojo-dstore" }
 				]
 			}
 		}
