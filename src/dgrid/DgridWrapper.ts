@@ -216,7 +216,7 @@ export interface CellFocusData {
 	parentType?: string;
 }
 
-interface DgridInnerWrapperProperties extends DgridWrapperProperties {
+export interface DgridInnerWrapperProperties extends DgridWrapperProperties {
 	// The inner wrapper can pass a state object to the outer wrapper widget so
 	// a dgrid grid can be destroyed and recreated back to the same state when
 	// desired.
@@ -228,7 +228,7 @@ interface DgridInnerWrapperProperties extends DgridWrapperProperties {
  * When a dgrid grid is destroyed some of its state will need to be restored when the next
  * grid is created.  This interface describes that state.
  */
-interface DgridState {
+export interface DgridState {
 	currentPage?: number;
 }
 
@@ -483,7 +483,7 @@ function buildCollection(properties: DgridProperties, data?: {}[], features?: Dg
  * changes in DgridProperties#data.  If the other properties change, then this widget will need
  * to be destroyed and a new one created.
  */
-class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
+export class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 	private _grid: DgridGrid;
 
 	protected render(): DNode {

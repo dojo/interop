@@ -1,6 +1,7 @@
 import TestProjector from './TestProjector';
 import harness from '@dojo/framework/testing/harness';
 import DgridWrapper, {
+	DgridInnerWrapper,
 	DgridWrapperProperties,
 	SelectionData,
 	SelectionMode,
@@ -29,7 +30,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 			})
 		);
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper0',
 				columns: {
@@ -58,7 +59,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 		};
 		const h = harness(() => w(DgridWrapper, properties));
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper0',
 				columns: {
@@ -78,7 +79,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 			last: 'Last'
 		};
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper0',
 				columns: {
@@ -101,7 +102,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 			}
 		];
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [
 					{
 						id: 1,
@@ -124,7 +125,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 		);
 		properties.columns = [{ field: 'first', label: 'FIRST' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [
 					{
 						id: 1,
@@ -143,7 +144,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 		);
 		properties.columns = [{ field: 'first', label: 'fIrSt' }, { field: 'last', label: 'LAST' }];
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [
 					{
 						id: 1,
@@ -175,7 +176,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 		};
 		const h = harness(() => w(DgridWrapper, properties));
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper0',
 				columns: {
@@ -187,13 +188,13 @@ registerSuite('dgrid/Dgrid VDOM', {
 				features: {
 					pagination: true
 				}
-			} as DgridWrapperProperties)
+			} as any)
 		);
 		properties.features = {
 			pagination: false
 		};
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper1',
 				columns: {
@@ -209,7 +210,7 @@ registerSuite('dgrid/Dgrid VDOM', {
 		);
 		properties.previousNextArrows = false;
 		h.expect(() =>
-			w('DgridInnerWrapper', {
+			w(DgridInnerWrapper, {
 				data: [],
 				key: 'dgridWrapper2',
 				columns: {
