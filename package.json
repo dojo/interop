@@ -46,10 +46,10 @@
     "watch": "run-p watch:ts \"build:static:** -- --watch\""
   },
   "peerDependencies": {
-    "@dojo/framework": "~3.0.0"
+    "@dojo/framework": "^4.0.0"
   },
   "devDependencies": {
-    "@dojo/framework": "~3.0.0",
+    "@dojo/framework": "^4.0.0",
     "@dojo/loader": "^2.0.0",
     "@dojo/scripts": "~3.0.1",
     "@types/dojo": "^1.9.40",
