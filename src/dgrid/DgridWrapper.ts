@@ -513,7 +513,11 @@ export class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 	}
 
 	protected onDetach(): void {
-		this._grid && this._grid.destroy();
+		// @dojo/framework expects this node to still be attached so we need to
+		// delay calling destroy
+		setTimeout(() => {
+			this._grid && this._grid.destroy();
+		});
 	}
 
 	private emitGridState(): void {

@@ -1,6 +1,5 @@
 {
 	"extends": "./node_modules/@dojo/scripts/intern/base.json",
-	"leaveRemoteOpen": true,
 	"capabilities+": {
 		"name": "@dojo/interop"
 	},
