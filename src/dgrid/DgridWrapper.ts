@@ -1,5 +1,5 @@
 import { dom } from '@dojo/framework/widget-core/d';
-import { duplicate } from '@dojo/framework/core/lang';
+import { deepMixin } from '@dojo/framework/core/util';
 import * as Grid from 'dgrid/Grid';
 import * as declare from 'dojo/_base/declare';
 import * as CellSelection from 'dgrid/CellSelection';
@@ -286,6 +286,12 @@ interface DgridCellFocusEvent extends Event {
 	parentType?: string;
 }
 
+function duplicate<T extends {}>(source: T): T {
+	const target = Object.create(Object.getPrototypeOf(source));
+
+	return deepMixin(target, source);
+}
+
 function buildSelectEvent(event: DgridSelectionEvent): SelectionData {
 	const selectionType = event.rows ? SelectionType.row : SelectionType.cell;
 	const data: SelectionData = {
@@ -507,6 +513,7 @@ export class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
 	}
 
 	protected onDetach(): void {
+		// @dojo/framework expects this node to still be attached so we need to
 		this._grid && this._grid.destroy();
 	}
 
