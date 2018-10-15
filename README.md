@@ -42,8 +42,8 @@ and place it in a Dojo `App` widget would look something like this:
 ```ts
 import * as CalendarDijit from 'dijit/Calendar';
 import DijitWrapper from '@dojo/interop/dijit/DijitWrapper';
-import { v, w } from '@dojo/widget-core/d';
-import WidgetBase from '@dojo/widget-core/WidgetBase';
+import { v, w } from '@dojo/framework/widget-core/d';
+import WidgetBase from '@dojo/framework/widget-core/WidgetBase';
 
 const Calendar = DijitWrapper(CalendarDijit);
 
@@ -85,10 +85,10 @@ For most existing legacy Dojo Dijits, the TypeScript typings can be found at [do
 An injector can be defined in the registry, which is then provided to the `Projector` as one of its properties. This is demonstrated in the example below.
 
 ```typescript
-import global from '@dojo/shim/global';
-import ProjectorMixin from '@dojo/widget-core/mixins/Projector';
+import global from '@dojo/framework/shim/global';
+import ProjectorMixin from '@dojo/framework/widget-core/mixins/Projector';
 import ReduxInjector from '@dojo/interop/redux/ReduxInjector';
-import Registry from '@dojo/widget-core/Registry';
+import Registry from '@dojo/framework/widget-core/Registry';
 
 import TodoAppContainer from './containers/TodoAppContainer';
 import { createStore } from 'redux';
