@@ -1,4 +1,4 @@
-import renderer from '@dojo/framework/widget-core/vdom';
+import renderer from '@dojo/framework/core/vdom';
 import harness from '@dojo/framework/testing/harness';
 import DgridWrapper, {
 	DgridInnerWrapper,
@@ -8,8 +8,8 @@ import DgridWrapper, {
 	SelectionType
 } from '../../../src/dgrid/DgridWrapper';
 
-import { w } from '@dojo/framework/widget-core/d';
-import WidgetBase from '@dojo/framework/widget-core/WidgetBase';
+import { w } from '@dojo/framework/core/vdom';
+import WidgetBase from '@dojo/framework/core/WidgetBase';
 
 const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');

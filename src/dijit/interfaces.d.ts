@@ -1,5 +1,5 @@
-import { DNode, WidgetProperties, WNode } from '@dojo/framework/widget-core/interfaces';
-import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
+import { DNode, WidgetProperties, WNode } from '@dojo/framework/core/interfaces';
+import { WidgetBase } from '@dojo/framework/core/WidgetBase';
 
 /**
  * A basic interface for Dojo 1 Dijit instances

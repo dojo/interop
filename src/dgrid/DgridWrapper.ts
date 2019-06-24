@@ -1,4 +1,3 @@
-import { dom } from '@dojo/framework/widget-core/d';
 import { deepMixin } from '@dojo/framework/core/util';
 import * as Grid from 'dgrid/Grid';
 import * as declare from 'dojo/_base/declare';
@@ -18,10 +17,10 @@ import * as OnDemandGrid from 'dgrid/OnDemandGrid';
 import * as Keyboard from 'dgrid/Keyboard';
 import * as Pagination from 'dgrid/extensions/Pagination';
 import * as Selection from 'dgrid/Selection';
-import { DNode, WidgetProperties } from '@dojo/framework/widget-core/interfaces';
-import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
-import { diffProperty } from '@dojo/framework/widget-core/decorators/diffProperty';
-import { w } from '@dojo/framework/widget-core/d';
+import { DNode, WidgetProperties } from '@dojo/framework/core/interfaces';
+import { WidgetBase } from '@dojo/framework/core/WidgetBase';
+import { diffProperty } from '@dojo/framework/core/decorators/diffProperty';
+import { w, dom } from '@dojo/framework/core/vdom';
 import { columnsDiff } from './diff';
 
 export enum SelectionMode {
@@ -403,8 +402,7 @@ function buildConstructor(properties: DgridInnerWrapperProperties, emitGridState
 		columnResizer = false,
 		compoundColumns = false,
 		columnSet = false
-	} =
-		properties.features || {};
+	} = properties.features || {};
 
 	let mixins: any[] = [];
 	let overrides: any = {};
@@ -490,7 +488,7 @@ function buildCollection(properties: DgridProperties, data?: {}[], features?: Dg
  * to be destroyed and a new one created.
  */
 export class DgridInnerWrapper extends WidgetBase<DgridInnerWrapperProperties> {
-	private _grid: DgridGrid;
+	private _grid!: DgridGrid;
 
 	protected render(): DNode {
 		let grid = this._grid;
@@ -641,7 +639,7 @@ const keyPrefix = 'dgridWrapper';
 @diffProperty('columns', columnsDiff)
 export class DgridWrapper extends WidgetBase<DgridWrapperProperties> {
 	private key = 0;
-	private _gridState: DgridState;
+	private _gridState: DgridState | undefined;
 
 	protected render(): DNode {
 		const changedPropertyKeys = this.changedPropertyKeys;
