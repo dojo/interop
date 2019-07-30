@@ -49,9 +49,9 @@
     "@dojo/framework": "^5.0.0"
   },
   "devDependencies": {
-    "@dojo/framework": "6.0.0-alpha.3",
+    "@dojo/framework": "6.0.0-alpha.15",
     "@dojo/loader": "^2.0.0",
-    "@dojo/scripts": "~4.0.1",
+    "@dojo/scripts": "~4.0.2",
     "@types/dojo": "^1.9.40",
     "@types/node": "~9.6.5",
     "@types/sinon": "~4.1.2",
