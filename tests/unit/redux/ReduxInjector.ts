@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 
 registerSuite('reduxInjectorFactory', {
 	reduxInjector() {
-		const store = createStore((state) => state);
+		const store = createStore((state) => state || {});
 		const injectorFactory = reduxInjectorFactory(store);
 		const invalidatorStub = stub();
 		injectorFactory(invalidatorStub);
@@ -14,7 +14,7 @@ registerSuite('reduxInjectorFactory', {
 		assert.isTrue(invalidatorStub.calledOnce);
 	},
 	get() {
-		const store = createStore((state) => state);
+		const store = createStore((state) => state || {});
 		const extraOptions = {};
 		const invalidatorStub = stub();
 		const injector = reduxInjectorFactory(store, extraOptions)(invalidatorStub);

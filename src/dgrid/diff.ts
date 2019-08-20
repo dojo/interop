@@ -1,6 +1,6 @@
 import { Column, ColumnSpec } from 'dgrid/Grid';
-import { PropertyChangeRecord } from '@dojo/framework/widget-core/interfaces';
-import { auto } from '@dojo/framework/widget-core/diff';
+import { PropertyChangeRecord } from '@dojo/framework/core/interfaces';
+import { auto } from '@dojo/framework/core/diff';
 
 export function columnsDiff(prevColumnSpec: ColumnSpec, newColumnSpec: ColumnSpec): PropertyChangeRecord {
 	let changed = true;

@@ -1,9 +1,9 @@
 import { assign } from '@dojo/framework/shim/object';
-import { isWNode, v } from '@dojo/framework/widget-core/d';
-import { Constructor, DNode, VNode, WNode } from '@dojo/framework/widget-core/interfaces';
-import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
-import afterRender from '@dojo/framework/widget-core/decorators/afterRender';
-import Base from '@dojo/framework/widget-core/meta/Base';
+import { isWNode, v } from '@dojo/framework/core/vdom';
+import { Constructor, DNode, VNode, WNode } from '@dojo/framework/core/interfaces';
+import { WidgetBase } from '@dojo/framework/core/WidgetBase';
+import afterRender from '@dojo/framework/core/decorators/afterRender';
+import Base from '@dojo/framework/core/meta/Base';
 import { Dijit, DijitConstructor, DijitWrapperProperties, DijitWrapper as DijitWrapperClass } from './interfaces';
 
 /**
@@ -124,7 +124,7 @@ export function DijitWrapper<D extends Dijit>(
 		}
 	}
 
-	return DijitWrapper;
+	return DijitWrapper as Constructor<DijitWrapperClass<D>>;
 }
 
 export default DijitWrapper;

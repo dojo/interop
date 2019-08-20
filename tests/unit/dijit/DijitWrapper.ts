@@ -4,7 +4,7 @@ import harness from '@dojo/framework/testing/harness';
 import { stub } from 'sinon';
 import DijitWrapper from '../../../src/dijit/DijitWrapper';
 
-import { v, w } from '@dojo/framework/widget-core/d';
+import { v, w } from '@dojo/framework/core/vdom';
 
 class MockDijit {
 	public id: string | undefined;
