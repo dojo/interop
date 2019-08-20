@@ -49,7 +49,7 @@
     "@dojo/framework": "^5.0.0"
   },
   "devDependencies": {
-    "@dojo/framework": "6.0.0-alpha.15",
+    "@dojo/framework": "6.0.0-alpha.19",
     "@dojo/loader": "^2.0.0",
     "@dojo/scripts": "~4.0.2",
     "@types/dojo": "^1.9.40",
