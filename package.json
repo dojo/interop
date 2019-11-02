@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "dgrid": "1.2.1",
-    "dojo": "1.13.0",
+    "dojo": "1.13.1",
     "dojo-dstore": "1.1.2",
     "tslib": "1.9.1"
   },
