@@ -58,6 +58,8 @@ export interface DgridWrapperFeatures {
 	compoundColumns?: boolean;
 	// Enable the column set mixin.
 	columnSet?: boolean;
+	// Keep the scroll position
+	keepScrollPosition?: boolean;
 }
 
 export interface DgridWrapperProperties extends WidgetProperties {
