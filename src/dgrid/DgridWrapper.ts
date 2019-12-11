@@ -58,8 +58,6 @@ export interface DgridWrapperFeatures {
 	compoundColumns?: boolean;
 	// Enable the column set mixin.
 	columnSet?: boolean;
-	// Keep the scroll position
-	keepScrollPosition?: boolean;
 }
 
 export interface DgridWrapperProperties extends WidgetProperties {
@@ -129,6 +127,9 @@ export interface DgridWrapperProperties extends WidgetProperties {
 
 	minWidth?: number;
 	adjustLastColumn?: boolean;
+
+	// Keep the scroll position
+	keepScrollPosition?: boolean;
 
 	columnSets?: Array<Array<Column[]>>;
 }
