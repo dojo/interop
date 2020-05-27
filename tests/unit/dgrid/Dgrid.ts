@@ -1,5 +1,5 @@
 import renderer from '@dojo/framework/core/vdom';
-import harness from '@dojo/framework/testing/harness';
+import harness from '@dojo/framework/testing/harness/harness';
 import DgridWrapper, {
 	DgridInnerWrapper,
 	DgridWrapperProperties,
